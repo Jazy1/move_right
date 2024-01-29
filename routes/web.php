@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+//hello
 Route::get("/", function(){
     return view("home");
 })->name("public.home");
