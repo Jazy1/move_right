@@ -1,0 +1,90 @@
+Helper.txt
+
+So here's what I understand.
+
+I have to create a property management system, kinda of like zameen.com or other property websites where there are properties up for selling and sub letting (when a tenant allows someone else to rent property that they are renting from someone else) 
+
+Entities so far
+	property
+		id
+		created_at
+		updated_at
+		title
+		description
+		address
+		location_id
+			city_id
+			area_id
+		landlord_id
+		subletter_id
+		type (enum)
+			house
+			plot
+		list_in (enum)
+			sell
+			rent
+		sq_yard
+		price
+		allow_sublet
+		bedrooms
+		bathrooms
+		kitchens
+		garages
+		built_year
+		amenities (json)
+		media (json)
+			media_1
+			media_2
+			media_3
+			media_4
+			media_5
+
+	location
+		id
+		city_id
+		area_id
+
+	city
+		id
+		name
+
+	area
+		id
+		name
+		city_id
+
+	landlord
+		id
+		created_at
+		updated_at
+		name
+		email
+		password
+		phone
+		about
+		location_id
+		profile_picture
+
+	subletter
+		id
+		created_at
+		updated_at
+		name
+		email
+		password
+		phone
+		about
+		location_id
+		profile_picture
+
+Todo
+	Signup landlord (done)
+	Login landlord (done)
+	Dashboard landlord (done)
+	Fix lazy imgs prob (done)
+	Add property
+	Show property
+	Update Property
+	Signup buyer
+	Login buyer
+	Dashboard buyer
