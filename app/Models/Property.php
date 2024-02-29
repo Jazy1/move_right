@@ -25,12 +25,14 @@ class Property extends Model
         'kitchens',
         'garages',
         'built_year',
+        'uuid',
         'amenities',
         'media',
     ];
 
     protected $casts = [
         'amenities' => 'json',
+        'media' => 'json',
     ];
 
     // Define relationships if needed

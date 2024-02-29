@@ -2,21 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\Landlord;
+use App\Models\Buyer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class LandlordSeeder extends Seeder
+class BuyerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Landlord::create([
-            'name' => 'Mahesh Dallay',
-            'email' => 'landlord@example.com',
+        Buyer::create([
+            'name' => 'Londaybaz',
+            'email' => 'buyer@example.com',
             'password' => Hash::make('1234567890'),
             'phone' => null, // You can set a specific value if needed
             'about' => null, // You can set a specific value if needed

@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Musha</h1>
+    <img src="{{ Storage::url("property_media/image-placeholder.svg") }}" alt="">
 </body>
 </html>

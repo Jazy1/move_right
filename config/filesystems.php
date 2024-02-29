@@ -56,6 +56,12 @@ return [
             'throw' => false,
         ],
 
+        // 'property-media' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public/property_media'),
+        //     'visibility' => 'public',
+        // ],
+
     ],
 
     /*
