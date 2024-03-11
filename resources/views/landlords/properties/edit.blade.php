@@ -45,7 +45,7 @@
                                 <select class="nice-select" name="type">
                                     <option value="" style="display: none;">Select Type</option>
                                     
-                                    @foreach(['house', 'plot'] as $optionValue)
+                                    @foreach(['house', 'plot', 'apartments', 'Industrial', 'condos', 'villas', 'lofts'] as $optionValue)
                                         <option value="{{ $optionValue }}" {{ $property->type == $optionValue ? 'selected' : '' }}>
                                             {{ ucfirst($optionValue) }} <!-- Optional: capitalize the option text -->
                                         </option>
@@ -106,7 +106,7 @@
                             <div class="dash-input-wrapper mb-30">
                                 <label for="">Bedrooms*</label>
                                 <select class="nice-select" name="bedrooms" required>
-                                    @foreach (range(1, 10) as $bedroomNo)
+                                    @foreach (range(0, 10) as $bedroomNo)
                                         <option value="{{ $bedroomNo }}" {{ $property->bedrooms == $bedroomNo ? 'selected' : '' }}>{{ $bedroomNo }}</option>
                                     @endforeach
                                 </select>
@@ -118,7 +118,7 @@
                             <div class="dash-input-wrapper mb-30">
                                 <label for="">Bathrooms*</label>
                                 <select class="nice-select" name="bathrooms" required>
-                                    @foreach (range(1, 10) as $bathroomNo)
+                                    @foreach (range(0, 10) as $bathroomNo)
                                         <option value="{{ $bathroomNo }}" {{ $property->bathrooms == $bathroomNo ? 'selected' : '' }}>{{ $bathroomNo }}</option>
                                     @endforeach
                                 </select>
@@ -130,7 +130,7 @@
                             <div class="dash-input-wrapper mb-30">
                                 <label for="">Kitchens*</label>
                                 <select class="nice-select" name="kitchens" required>
-                                    @foreach (range(1, 10) as $kitchenNo)
+                                    @foreach (range(0, 10) as $kitchenNo)
                                         <option value="{{ $kitchenNo }}" {{ $property->kitchens == $kitchenNo ? 'selected' : '' }}>{{ $kitchenNo }}</option>
                                     @endforeach
                                 </select>
@@ -142,7 +142,7 @@
                             <div class="dash-input-wrapper mb-30">
                                 <label for="">Garages</label>
                                 <select class="nice-select" name="garages" required>
-                                    @foreach (range(1, 10) as $garageNo)
+                                    @foreach (range(0, 10) as $garageNo)
                                         <option value="{{ $garageNo }}" {{ $property->garages == $garageNo ? 'selected' : '' }}>{{ $garageNo }}</option>
                                     @endforeach
                                 </select>

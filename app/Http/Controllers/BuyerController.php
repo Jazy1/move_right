@@ -114,7 +114,7 @@ class BuyerController extends Controller
     }
 
     public function dashboard(){
-        return "dashboard <a href=" . route('buyers.logout') . ">Logout";
-        // return view("buyers.dashboard");
+        // return "Dashboard <a href=" . route('buyers.logout') . ">Logout";
+        return view("buyers.dashboard");
     }
 }

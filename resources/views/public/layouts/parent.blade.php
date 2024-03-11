@@ -53,13 +53,13 @@
 		</div>
 
 
-        <!-- ################### Login Modal ####################### -->
+        <!-- ################### Search Modal ####################### -->
         <!-- Modal -->
         <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen modal-dialog-centered">
                 <div class="modal-content d-flex justify-content-center">
-                    <form action="#">
-                        <input type="text" placeholder="Buy Apartments, Rent Condos, Sell Houses">
+                    <form action="{{ route("public.listings") }}" method="GET">
+                        <input type="text" name="keywords" placeholder="Buy Apartments, Rent Condos, Sell Houses">
                         <button><i class="fa-light fa-arrow-right-long"></i></button>
                     </form>
                 </div>

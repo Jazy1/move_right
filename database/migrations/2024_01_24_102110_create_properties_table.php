@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('location_id')->nullable();
             $table->unsignedBigInteger('landlord_id')->nullable();
             $table->unsignedBigInteger('subletter_id')->nullable();
-            $table->enum('type', ['house', 'plot', 'apartments', 'condos', 'villas', 'lofts'])->nullable();
+            $table->enum('type', ['house', 'plot', 'apartments', 'industrial', 'condos', 'villas', 'lofts'])->nullable();
             $table->enum('list_in', ['sell', 'rent'])->nullable();
             $table->enum('status', ['available', 'unavailable']);
             $table->integer('sq_yard')->nullable();

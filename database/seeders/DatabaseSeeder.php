@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             LandlordSeeder::class,
             CitySeeder::class,
             BuyerSeeder::class,
+            LocationSeeder::class
         ]);
     }
 }

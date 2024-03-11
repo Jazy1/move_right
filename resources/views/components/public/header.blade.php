@@ -3,7 +3,7 @@
         <div class="top-header position-relative">
             <div class="d-flex align-items-center">
                 <div class="logo order-lg-0">
-                    <a href="index.html" class="d-flex align-items-center">
+                    <a href="{{ route("public.home") }}" class="d-flex align-items-center">
                         <img src=" {{ asset("images/logo/logo_06.svg") }} " alt="">
                     </a>
                 </div>
@@ -57,25 +57,56 @@
                     <div class="collapse navbar-collapse ms-xl-5" id="navbarNav">
                         <ul class="navbar-nav align-items-lg-center">
                             <li class="d-block d-lg-none"><div class="logo"><a href="index.html" class="d-block"><img src="images/logo/logo_06.svg" alt=""></a></div></li>
-                            <li class="nav-item dashboard-menu">
-                                <a class="nav-link" href="dashboard/dashboard-index.html" target="_blank">Dashboard</a>
+                                {{-- <li class="nav-item dashboard-menu">
+                                    <a class="nav-link" href="dashboard/dashboard-index.html" target="_blank">Dashboard</a>
+                                </li> --}}
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route("public.home") }}" >Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    data-bs-auto-close="outside" aria-expanded="false">Home
+                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                    Buy
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="index.html" class="dropdown-item"><span>Home 01</span></a></li>
-                                    <li><a href="index-2.html" class="dropdown-item"><span>Home 02</span></a></li>
-                                    <li><a href="index-3.html" class="dropdown-item"><span>Home 03</span></a></li>
-                                    <li><a href="index-4.html" class="dropdown-item"><span>Home 04</span></a></li>
-                                    <li><a href="index-5.html" class="dropdown-item"><span>Home 05</span></a></li>
-                                    <li><a href="index-6.html" class="dropdown-item"><span>Home 06</span></a></li>
-                                    <li><a href="index-7.html" class="dropdown-item"><span>Home 07</span></a></li>
+                                    <li><a href="{{ route("public.listings", ['type' => 'house', 'list_in' => "sell"]) }}" class="dropdown-item"><span>House</span></a></li>
+                                    <li><a href="{{ route("public.listings", ['type' => 'apartments', 'list_in' => "sell"]) }}" class="dropdown-item"><span>Apartments</span></a></li>
+                                    <li><a href="{{ route("public.listings", ['type' => 'condos', 'list_in' => "sell"]) }}" class="dropdown-item"><span>Condos</span></a></li>
+                                    <li><a href="{{ route("public.listings", ['type' => 'villas', 'list_in' => "sell"]) }}" class="dropdown-item"><span>Villas</span></a></li>
+                                    <li><a href="{{ route("public.listings", ['type' => 'lofts', 'list_in' => "sell"]) }}" class="dropdown-item"><span>Lofts</span></a></li>
+                                    <li><a href="{{ route("public.listings", ['type' => 'plots', 'list_in' => "sell"]) }}" class="dropdown-item"><span>Plot</span></a></li>
+                                    <li><a href="{{ route("public.listings", ['type' => 'industrial', 'list_in' => "sell"]) }}" class="dropdown-item"><span>Industrial</span></a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown mega-dropdown-sm">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Listing
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                    Rent
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route("public.listings", ['type' => 'house', 'list_in' => "rent"]) }}" class="dropdown-item"><span>House</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("public.listings", ['type' => 'apartments', 'list_in' => "rent"]) }}" class="dropdown-item"><span>Apartments</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("public.listings", ['type' => 'condos', 'list_in' => "rent"]) }}" class="dropdown-item"><span>Condos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("public.listings", ['type' => 'villas', 'list_in' => "rent"]) }}" class="dropdown-item"><span>Villas</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("public.listings", ['type' => 'lofts', 'list_in' => "rent"]) }}" class="dropdown-item"><span>Lofts</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("public.listings", ['type' => 'plots', 'list_in' => "rent"]) }}" class="dropdown-item"><span>Plot</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("public.listings", ['type' => 'industrial', 'list_in' => "rent"]) }}" class="dropdown-item"><span>Industrial</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {{-- <li class="nav-item dropdown mega-dropdown-sm">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Best Selling Properties
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="row gx-1">
@@ -125,8 +156,14 @@
                                         </div>
                                     </li>
                                 </ul>
+                            </li> --}}
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route("public.listings") }}" >Best Selling</a>
                             </li>
-                            <li class="nav-item dropdown mega-dropdown-sm">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route("public.contact") }}" >Contact Us</a>
+                            </li>
+                            {{-- <li class="nav-item dropdown mega-dropdown-sm">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages
                                 </a>
                                 <ul class="dropdown-menu">
@@ -185,7 +222,7 @@
                                     <li><a href="blog_03.html" class="dropdown-item"><span>Blog 2 column</span></a></li>
                                     <li><a href="blog_details.html" class="dropdown-item"><span>Blog Details</span></a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="d-md-none d-flex align-items-center justify-content-center login-btn-one ps-2 pe-2 mt-40">
                                 <span class="pe-3 fw-500">Call Now:</span>
                                 <a href="tel:+757-699-4478" class="tran3s">+757 699-4478</a>

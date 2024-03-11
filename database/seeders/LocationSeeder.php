@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Area;
 use App\Models\City;
+use App\Models\Location;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,9 @@ class LocationSeeder extends Seeder
      */
     public function run(): void
     {
-        
+        Location::create([
+            'city_id' => 1,
+            'area_id' => 1
+        ]);
     }
 }

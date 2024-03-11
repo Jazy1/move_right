@@ -31,9 +31,9 @@
 									<img src="images/lazy.svg" data-src="{{ asset("images/media/img_36.jpg") }}" alt="" class="lazy-img avatar">
 								</span>
 							</h1>
-							<p class="fs-24 text-white pt-40 pb-30 md-pb-20 pe-xl-5">Explore a vast selection listings, including apartments, houses and plots.</p>
+							<p class="fs-24 text-white pt-40 pb-30 md-pb-20 pe-xl-5">Explore our vast listings of apartments, condos, villas, lofts, houses and plots.</p>
 							<div class="d-inline-flex flex-wrap align-items-center">
-								<a href="listing_01.html" class="btn-two rounded-0 border-0 mt-15 me-4"><span>Explore All</span></a>
+								<a href="{{ route("public.listings") }}" class="btn-two rounded-0 border-0 mt-15 me-4"><span>Explore All</span></a>
 								{{-- <a href="contact.html" class="btn-eight inverse mt-15"><span>Request a Callback</span> <i class="fa-sharp fa-light fa-arrow-right-long"></i></a> --}}
 							</div>
 						</div>
@@ -44,29 +44,32 @@
 								<div class="nav nav-tabs border-0" role="tablist">
 									<button class="nav-link active" id="buy-tab" data-bs-toggle="tab" data-bs-target="#buy" type="button" role="tab" aria-controls="buy" aria-selected="true">Buy</button>
 									<button class="nav-link" id="rent-tab" data-bs-toggle="tab" data-bs-target="#rent" type="button" role="tab" aria-controls="rent" aria-selected="false">Rent</button>
-									<button class="nav-link" id="sell-tab" data-bs-toggle="tab" data-bs-target="#sell" type="button" role="tab" aria-controls="sell" aria-selected="false">Sell</button>
+									{{-- <button class="nav-link" id="sell-tab" data-bs-toggle="tab" data-bs-target="#sell" type="button" role="tab" aria-controls="sell" aria-selected="false">Sell</button> --}}
 								</div>
 							</nav>
 							<div class="bg-wrapper position-relative z-1">
 								<h4 class="mb-35 xl-mb-30">Find & Buy Now!</h4>
 								<div class="tab-content">
 									<div class="tab-pane show active" id="buy" role="tabpanel" aria-labelledby="buy-tab" tabindex="0">
-										<form action="#">
+										<form action="{{ route("public.listings") }}" method="GET">
+											<input type="hidden" name="list_in" value="sell">
 											<div class="row gx-0 align-items-center">
 												<div class="col-12">
 													<div class="input-box-one bottom-border mb-25">
 														<div class="label">I’m looking to...</div>
-														<select class="nice-select fw-normal">
-															<option value="1">Buy Apartments</option>
-															<option value="2">Buy Condos</option>
-															<option value="3">Buy Houses</option>
-															<option value="4">Buy Industrial</option>
-															<option value="6">Buy Villas</option>
+														<select class="nice-select fw-normal" name="type">
+															<option value="apartments">Buy Apartments</option>
+															<option value="villas">Buy Villas</option>
+															<option value="condos">Buy Condos</option>
+															<option value="lofts">Buy Lofts</option>
+															<option value="house">Buy Houses</option>
+															<option value="Industrial">Buy Industrial</option>
+															<option value="plot">Buy Plots</option>
 														</select>
 													</div>
 													<!-- /.input-box-one -->
 												</div>
-												<div class="col-12">
+												{{-- <div class="col-12">
 													<div class="input-box-one bottom-border mb-25">
 														<div class="label">Location</div>
 														<select class="nice-select location fw-normal">
@@ -80,14 +83,14 @@
 														</select>
 													</div>
 													<!-- /.input-box-one -->
-												</div>
+												</div> --}}
 												<div class="col-12">
 													<div class="input-box-one bottom-border mb-50 lg-mb-30">
 														<div class="label">Price Range</div>
-														<select class="nice-select fw-normal">
-															<option value="1">$10,000 - $200,000</option>
-															<option value="2">$200,000 - $300,000</option>
-															<option value="2">$300,000 - $400,000</option>
+														<select class="nice-select fw-normal" name="price_range">
+															<option value="£500 - £50,000">£10,000 - £50,000</option>
+															<option value="£50,000 - £100,000">£50,000 - £100,000</option>
+															<option value="£100,000 - £500,000">£100,000 - £500,000</option>
 														</select>
 													</div>
 													<!-- /.input-box-one -->
@@ -102,22 +105,25 @@
 										</form>
 									</div>
 									<div class="tab-pane" id="rent" role="tabpanel" aria-labelledby="rent-tab" tabindex="0">
-										<form action="#">
+										<form action="{{ route("public.listings") }}" method="GET">
+											<input type="hidden" name="list_in" value="rent">
 											<div class="row gx-0 align-items-center">
 												<div class="col-12">
 													<div class="input-box-one bottom-border mb-25">
 														<div class="label">I’m looking to...</div>
-														<select class="nice-select fw-normal">
-															<option value="1">Rent Apartments</option>
-															<option value="2">Rent Condos</option>
-															<option value="3">Rent Houses</option>
-															<option value="4">Rent Industrial</option>
-															<option value="6">Rent Villas</option>
+														<select class="nice-select fw-normal" name="type">
+															<option value="apartments">Buy Apartments</option>
+															<option value="villas">Buy Villas</option>
+															<option value="condos">Buy Condos</option>
+															<option value="lofts">Buy Lofts</option>
+															<option value="house">Buy Houses</option>
+															<option value="Industrial">Buy Industrial</option>
+															<option value="plot">Buy Plots</option>
 														</select>
 													</div>
 													<!-- /.input-box-one -->
 												</div>
-												<div class="col-12">
+												{{-- <div class="col-12">
 													<div class="input-box-one bottom-border mb-25">
 														<div class="label">Location</div>
 														<select class="nice-select location fw-normal">
@@ -131,14 +137,14 @@
 														</select>
 													</div>
 													<!-- /.input-box-one -->
-												</div>
+												</div> --}}
 												<div class="col-12">
 													<div class="input-box-one bottom-border mb-50 lg-mb-30">
 														<div class="label">Price Range</div>
-														<select class="nice-select fw-normal">
-															<option value="1">$10,000 - $200,000</option>
-															<option value="2">$200,000 - $300,000</option>
-															<option value="2">$300,000 - $400,000</option>
+														<select class="nice-select fw-normal" name="price_range">
+															<option value="£500 - £1,000">£500 - £1,000</option>
+															<option value="£1,000 - £2,000">£1,000 - £2,000</option>
+															<option value="£2,000 - £5,000">£2,000 - £5,000</option>
 														</select>
 													</div>
 													<!-- /.input-box-one -->
@@ -152,7 +158,7 @@
 											</div>
 										</form>
 									</div>
-									<div class="tab-pane" id="sell" role="tabpanel" aria-labelledby="sell-tab" tabindex="0">
+									{{-- <div class="tab-pane" id="sell" role="tabpanel" aria-labelledby="sell-tab" tabindex="0">
 										<form action="#">
 											<div class="row gx-0 align-items-center">
 												<div class="col-12">
@@ -202,7 +208,7 @@
 												</div>
 											</div>
 										</form>
-									</div>
+									</div> --}}
 								</div>
 								<!-- /.tab-content -->
 							</div>
@@ -405,7 +411,7 @@
 				</div>
 
 				<div class="section-btn text-center md-mt-60">
-					<a href="listing_08.html" class="btn-eight"><span>Explore All</span> <i class="bi bi-arrow-up-right"></i></a>
+					<a href="{{ route("public.listings") }}" class="btn-eight"><span>Explore All</span> <i class="bi bi-arrow-up-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -432,9 +438,9 @@
 						@php
 							$url = isset($bestProperty->media[0]) ? Storage::url($bestProperty->media[0]) : asset('images/icon/image-placeholder.svg');
 						@endphp
-						{{ $bestProperty->media[1] }}
+						
 						<div class="col-lg-4 col-md-6 mt-40 wow fadeInUp">
-							<div class="listing-card-four overflow-hidden d-flex align-items-end position-relative z-1" style="background-image: url(  );">
+							<div class="listing-card-four overflow-hidden d-flex align-items-end position-relative z-1" style="background-image: url( '{{ asset($url) }}' );">
 								<div class="tag fw-500">{{ $bestProperty->list_in }}</div>
 								<div class="property-info tran3s w-100">
 									<div class="d-flex align-items-center justify-content-between">
@@ -551,7 +557,7 @@
 				</div>
 
 				<div class="section-btn text-center md-mt-60">
-					<a href="listing_06.html" class="btn-eight"><span>Explore All</span> <i class="bi bi-arrow-up-right"></i></a>
+					<a href="{{ route("public.listings") }}" class="btn-eight"><span>Explore All</span> <i class="bi bi-arrow-up-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -569,8 +575,8 @@
 				<div class="row">
 					<div class="col-xxl-6 col-xl-7 col-lg-8">
 						<div class="title-one mb-30 lg-mb-20 wow fadeInUp">
-							<h3>We’r here help to you  find properties.</h3>
-							<p class="fs-22">Over 745K listings of apartments, lots, plots - available today.</p>
+							<h3>We’r here help to you  find right and verified properties.</h3>
+							<p class="fs-22">Over 745K listings of apartments, lofts, plots - available today.</p>
 						</div>
 						<!-- /.title-one -->
 					</div>
@@ -579,28 +585,28 @@
 				<div class="row gx-xxl-5">
 					<div class="col-lg-4 col-md-6 mt-30 d-flex wow fadeInUp">
 						<div class="card-style-six d-inline-flex flex-column align-items-start tran3s h-100 w-100">
-							<div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s"><img src="images/lazy.svg" data-src="images/icon/icon_35.svg" alt="" class="lazy-img"></div>
+							<div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s"><img src="images/lazy.svg" data-src="{{ asset("images/icon/icon_35.svg") }}" alt="" class="lazy-img"></div>
 							<h5 class="mt-35 mb-20">Buy a home</h5>
-							<p class="mb-40">Explore homy’s 2 million+ homes and uncover your ideal living space.</p>
-							<a href="listing_03.html" class="btn-twelve rounded-0 sm mt-auto">Buy Home</a>
+							<p class="mb-40">Explore our 2 million+ homes and uncover your ideal living space.</p>
+							<a href="{{ route("public.listings", ['list_in' => 'sell', 'type' => 'house']) }}" class="btn-twelve rounded-0 sm mt-auto">Buy Home</a>
 						</div>
 						<!-- /.card-style-six -->
 					</div>
 					<div class="col-lg-4 col-md-6 mt-30 d-flex wow fadeInUp" data-wow-delay="0.1s">
 						<div class="card-style-six d-inline-flex flex-column align-items-start tran3s h-100 w-100">
-							<div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s"><img src="images/lazy.svg" data-src="images/icon/icon_36.svg" alt="" class="lazy-img"></div>
+							<div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s"><img src="images/lazy.svg" data-src="{{ asset("images/icon/icon_36.svg") }}" alt="" class="lazy-img"></div>
 							<h5 class="mt-35 mb-20">Rent a home</h5>
-							<p class="mb-40">Discover a rental you'll love on homy, thanks to 35+ filters.</p>
-							<a href="listing_03.html" class="btn-twelve rounded-0 sm mt-auto">Rent Home</a>
+							<p class="mb-40">Discover a rental you'll love here, thanks to wide range of filters.</p>
+							<a href="{{ route("public.listings", ['list_in' => 'rent', 'type' => 'house']) }}" class="btn-twelve rounded-0 sm mt-auto">Rent Home</a>
 						</div>
 						<!-- /.card-style-six -->
 					</div>
 					<div class="col-lg-4 col-md-6 mt-30 d-flex wow fadeInUp" data-wow-delay="0.2s">
 						<div class="card-style-six d-inline-flex flex-column align-items-start tran3s h-100 w-100">
-							<div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s"><img src="images/lazy.svg" data-src="images/icon/icon_37.svg" alt="" class="lazy-img"></div>
+							<div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s"><img src="images/lazy.svg" data-src="{{ asset("images/icon/icon_37.svg") }}" alt="" class="lazy-img"></div>
 							<h5 class="mt-35 mb-20">Sell Home</h5>
 							<p class="mb-40">List, sell, thrive – with our top-notch real estate agency. It’s super easy & fun.</p>
-							<a href="listing_03.html" class="btn-twelve rounded-0 sm mt-auto">Sell Home</a>
+							<a href="{{ route("landlords.properties.create") }}" class="btn-twelve rounded-0 sm mt-auto">Sell Home</a>
 						</div>
 						<!-- /.card-style-six -->
 					</div>
@@ -626,26 +632,26 @@
 				<!-- /.title-one -->
 				
 				<div class="wrapper flex-wrap d-flex justify-content-center justify-content-md-between align-items-center">
-					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url(images/media/img_38.jpg);">
-						<a href="listing_03.html" class="title stretched-link"><h4 class="text-white tran3s">Apartments</h4></a>
+					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url({{ asset('images/media/img_38.jpg') }});">
+						<a href="{{ route("public.listings", ['type' => 'apartments']) }}" class="title stretched-link"><h4 class="text-white tran3s">Apartments</h4></a>
 					</div>
 					<!-- /.card-style-seven -->
-					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url(images/media/img_39.jpg);" data-wow-delay="0.1s">
-						<a href="listing_03.html" class="title stretched-link"><h4 class="text-white tran3s">House</h4></a>
+					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url({{ asset('images/media/img_39.jpg') }});" data-wow-delay="0.1s">
+						<a href="{{ route("public.listings", ['type' => 'house']) }}" class="title stretched-link"><h4 class="text-white tran3s">House</h4></a>
 					</div>
 					<!-- /.card-style-seven -->
-					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url(images/media/img_40.jpg);" data-wow-delay="0.2s">
-						<a href="listing_03.html" class="title stretched-link"><h4 class="text-white tran3s">Lofts</h4></a>
+					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url({{ asset('images/media/img_40.jpg') }});" data-wow-delay="0.2s">
+						<a href="{{ route("public.listings", ['type' => 'lofts']) }}" class="title stretched-link"><h4 class="text-white tran3s">Lofts</h4></a>
 					</div>
 					<!-- /.card-style-seven -->
-					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url(images/media/img_41.jpg);" data-wow-delay="0.3s">
-						<a href="listing_03.html" class="title stretched-link"><h4 class="text-white tran3s">Villa</h4></a>
+					<div class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp" style="background-image: url({{ asset('images/media/img_41.jpg') }});" data-wow-delay="0.3s">
+						<a href="{{ route("public.listings", ['type' => 'villas']) }}" class="title stretched-link"><h4 class="text-white tran3s">Villa</h4></a>
 					</div>
 					<!-- /.card-style-seven -->
 				</div>
-				<div class="section-btn text-center md-mt-60">
+				{{-- <div class="section-btn text-center md-mt-60">
 					<a href="listing_02.html" class="btn-eleven"><span>See all categories</span> <i class="bi bi-chevron-right"></i></a>
-				</div>
+				</div> --}}
 				<!-- /.section-btn -->
 			</div>
 		</div>
@@ -657,7 +663,7 @@
 		BLock Feature Ten
 	============================================== 
 	-->
-	<div class="block-feature-ten mt-200 xl-mt-160 lg-mt-120 md-mt-100">
+	{{-- <div class="block-feature-ten mt-200 xl-mt-160 lg-mt-120 md-mt-100">
 		<div class="container container-large">
 			<div class="row">
 				<div class="col-xxl-5 col-lg-6 ms-auto order-lg-last wow fadeInRight">
@@ -708,7 +714,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- /.block-feature-ten -->
 
 	<!--
@@ -716,7 +722,7 @@
 		Feedback Section Five
 	=====================================================
 	-->
-	<div class="feedback-section-five mt-200 xl-mt-150 lg-mt-120">
+	{{-- <div class="feedback-section-five mt-200 xl-mt-150 lg-mt-120">
 		<div class="container container-large">
 			<div class="bg-pink-two bg-wrapper position-relative z-1 pt-60 lg-pt-40 pb-45 md-pb-30">
 				<div class="content-wrapper">
@@ -772,7 +778,7 @@
 				<!-- /.rating-wrapper -->
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- /.feedback-section-five -->
 
 
@@ -782,7 +788,7 @@
 		Partner Section Two
 	=====================================================
 	-->
-	<div class="partner-section-two mt-80">
+	{{-- <div class="partner-section-two mt-80">
 		<div class="container container-large">
 			<div class="wrapper bottom-border pb-65 md-pb-30">
 				<div class="row align-items-center">
@@ -803,7 +809,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- /.partner-section-two -->
 
 
@@ -813,7 +819,7 @@
 		Blog Section Two
 	=====================================================
 	-->
-	<div class="blog-section-two mt-170 xl-mt-120">
+	{{-- <div class="blog-section-two mt-170 xl-mt-120">
 		<div class="container container-large">
 			<div class="position-relative">
 				<div class="title-one mb-50 xl-mb-30 lg-mb-10 wow fadeInUp">
@@ -907,7 +913,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- /.blog-section-two -->
 
 
@@ -925,7 +931,7 @@
 						<div class="icon rounded-circle d-flex align-items-center justify-content-center"><img src="images/lazy.svg" data-src="images/icon/icon_39.svg" alt="" class="lazy-img"></div>
 						<div class="text">
 							<p class="fs-22">We’r always happy to help.</p>
-							<a href="#" class="tran3s">ask@homy.com</a>
+							<a href="#" class="tran3s">ask@move_right.com</a>
 						</div>
 						<!-- /.text -->
 					</div>
@@ -948,7 +954,7 @@
 						<div class="icon rounded-circle d-flex align-items-center justify-content-center"><img src="images/lazy.svg" data-src="images/icon/icon_39.svg" alt="" class="lazy-img"></div>
 						<div class="text">
 							<p class="fs-22">Live chat</p>
-							<a href="#" class="tran3s">www.homylivechat.com</a>
+							<a href="#" class="tran3s">www.move_right.com</a>
 						</div>
 						<!-- /.text -->
 					</div>
@@ -973,10 +979,10 @@
 				<div class="row align-items-end">
 					<div class="col-xl-6 col-lg-7 col-md-7">
 						<div class="pb-80 lg-pb-40">
-							<h3>Start your Journey as <span class="fw-normal fst-italic">A Retailer.</span></h3>
+							<h3>Start your Journey as <span class="fw-normal fst-italic">A Landlord.</span></h3>
 							<div class="d-inline-flex flex-wrap align-items-center position-relative mt-15">
-								<a href="agent.html" class="btn-eight mt-10 me-4"><span>Become an Agent</span></a>
-								<a href="contact.html" class="btn-two rounded-0 border-0 mt-10"><span>Contact us</span></a>
+								<a href="{{ route('landlords.dashboard') }}" class="btn-eight mt-10 me-4"><span>Become an Agent</span></a>
+								<a href="{{ route('public.contact') }}" class="btn-two rounded-0 border-0 mt-10"><span>Contact us</span></a>
 								<img src="images/lazy.svg" data-src="images/shape/shape_51.svg" alt="" class="lazy-img shapes shape_02 wow fadeInRight">
 							</div>
 						</div>

@@ -46,25 +46,25 @@ class PropertyController extends Controller
 
         // Validate the request data
         $validatedData = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'address' => 'required|string',
-            'landlord_id' => 'exists:landlords,id',
+            // 'title' => 'required|string',
+            // 'description' => 'required|string',
+            // 'address' => 'required|string',
+            // 'landlord_id' => 'exists:landlords,id',
             // 'city_id' => 'exists:cities,id',
             // 'area_id' => 'exists:areas,id',
-            'type' => 'nullable|in:house,plot',
-            'list_in' => 'nullable|in:sell,rent',
-            'sq_yard' => 'integer',
-            'price' => 'integer',
-            'allow_sublet' => 'nullable|boolean',
-            'bedrooms' => 'integer',
-            'bathrooms' => 'integer',
-            'kitchens' => 'integer',
-            'garages' => 'integer',
-            'built_year' => 'integer',
-            'amenities' => 'nullable|array',
-            'media' => 'nullable|array',
-            // Add other validation rules as needed
+            // 'type' => 'nullable|in:house,plot,apartments,Industrial,condos,villas,lofts',
+            // 'list_in' => 'nullable|in:sell,rent',
+            // 'sq_yard' => 'integer',
+            // 'price' => 'integer',
+            // 'allow_sublet' => 'nullable|boolean',
+            // 'bedrooms' => 'integer',
+            // 'bathrooms' => 'integer',
+            // 'kitchens' => 'integer',
+            // 'garages' => 'integer',
+            // 'built_year' => 'integer',
+            // 'amenities' => 'nullable|array',
+            // 'media' => 'nullable|array',
+            // // Add other validation rules as needed
         ]);
         
         // dd($validatedData);
@@ -170,7 +170,7 @@ class PropertyController extends Controller
             'description' => 'required|string',
             'address' => 'required|string',
             'landlord_id' => 'exists:landlords,id',
-            'type' => 'nullable|in:house,plot',
+            'type' => 'nullable|in:house,plot,apartments,industrial,condos,villas,lofts',
             'list_in' => 'nullable|in:sell,rent',
             'sq_yard' => 'integer',
             'price' => 'integer',

@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [PublicController::class, "home"])->name("public.home");
 Route::get("/property/{id}", [PropertyController::class, "show"])->name("public.property");
+Route::get("/landlord/{id}", [LandlordController::class, "show"])->name("public.landlord");
+Route::get("/listings", [PublicController::class, "search"])->name("public.listings");
+Route::get("/contact", [PublicController::class, "contact"])->name("public.contact");
 
 Route::get("/test", function(){
 
@@ -71,16 +74,9 @@ Route::prefix("buyers")->group(function(){
             return "soda";
         }); //for testing whether guards are working correctly or not
 
-        // Route::prefix("properties")->group(function(){
-        //     Route::get("/", [PropertyController::class, "index"])->name("landlords.properties");
+        Route::get("properties", [BuyerController::class, "properties"]);
 
-        //     Route::get("create", [PropertyController::class, "create"])->name("landlords.properties.create");
-        //     Route::post("/", [PropertyController::class, "store"])->name("landlords.properties.store");
-        //     Route::get("{property}/edit", [PropertyController::class, "edit"])->name("landlords.properties.edit");
-        //     Route::put("{property}/edit", [PropertyController::class, "update"])->name("landlords.properties.update");
-        //     Route::get('get-areas-by-city', [LocationController::class, 'getAreasByCity'])->name("landlords.properties.getAreasByCity");
-
-        // });
+        
     });
     
     Route::post('/', [BuyerController::class, "store"])->name("buyers.store");

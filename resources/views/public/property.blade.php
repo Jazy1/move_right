@@ -738,8 +738,9 @@
                                     <li>Phone: <span><a href="tel:{{ $property->landlord->phone }}"> {{ $property->landlord->phone }} </a></span></li>
                                 </ul>
                             </div>
+
                             <!-- /.divider-line -->
-                            <a href="contact.html" class="btn-nine text-uppercase rounded-3 w-100 mb-10">CONTACT AGENT</a>
+                            <a href="{{ route("public.landlord", $property->landlord->id) }}" class="btn-nine text-uppercase rounded-3 w-100 mb-10">AGENT</a>
                         </div>
                         <!-- /.agent-info -->
 
@@ -925,11 +926,14 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-wrapper me-auto ms-auto me-lg-0">
-                        <form action="#">
+                        {{-- <form >
                             <input type="email" placeholder="Email address">
-                            <button>Get Started</button>
-                        </form>
-                        <div class="fs-16 mt-10 text-white">Already a Landlord? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in.</a></div>
+                            <button data-bs-toggle="modal" data-bs-target="#loginModal">Get Started</button>
+                        </form> --}}
+                        <div class="fs-16 mt-10 text-white">
+                            Already a Landlord? 
+                            <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</a>
+                        </div>
                     </div>
                 </div>
             </div>

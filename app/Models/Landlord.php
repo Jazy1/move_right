@@ -12,4 +12,14 @@ class Landlord extends Model
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'about', 'location_id', 'profile_picture'
     ];
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
 }

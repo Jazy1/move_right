@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Landlord;
 use App\Http\Requests\StoreLandlordRequest;
 use App\Http\Requests\UpdateLandlordRequest;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
@@ -43,9 +44,15 @@ class LandlordController extends Controller
         ]);
     }
 
-    public function show(Landlord $landlord)
+    public function show($id)
     {
-        return view('landlords.show', compact('landlord'));
+        $landlord = Landlord::find($id);
+        $properties = $landlord->properties;
+        
+        return view('public.landlord', [
+            "landlord" => $landlord,
+            "properties" => $properties
+        ]);
     }
 
     public function edit(Landlord $landlord)

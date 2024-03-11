@@ -21,6 +21,7 @@ Entities so far
 			house
 			plot
 			apartments
+			industrial
 			condos
 			villas
 			lofts
@@ -113,7 +114,37 @@ Todo
 	Conditional hiding from header (Done)
 	dummy properties (miss)
 	Home page setup
-	search properties
-	buyer flow
+		Search feature enable (done)
+		Set remaining stuff (Done)
+		Contact page (Done)
+		Landlord page (Done)
+		Set header (Done)
+		Set footer (Done)
+		categories (Done)
+			house
+			plot
+			Industrial
+			apartments
+			condos
+			villas
+			lofts
+
+	search properties (Done)
+		keywords
+		type
+		location
+		price
+		latest 10
+
 	Dashboard buyer
+		My properties
+
+	buyer flow
+		Contracts
+
+	polish
+		Landlord main dashboard
+		Profile
+		Acc setting
+
 	favourites

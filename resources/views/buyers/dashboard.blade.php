@@ -1,8 +1,8 @@
 
 
-@extends('landlords.layouts.parent')
+@extends('buyers.layouts.parent')
 
-@section('title', "Landlord Dashboard | Move Right®")
+@section('title', "Buyer Dashboard | Move Right®")
 
 @section('content')
     
@@ -14,7 +14,7 @@
 	<div class="dashboard-body">
 		<div class="position-relative">
 			<!-- ************************ Header **************************** -->
-			<x-landlords.header />
+			<x-buyers.header />
 			<!-- End Header -->
 
 			<h2 class="main-title d-block d-lg-none">Dashboard</h2>

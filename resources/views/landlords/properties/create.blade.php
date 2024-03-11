@@ -45,6 +45,11 @@
                                     <option value="" style="display: none;">Select Type</option> 
                                     <option value="house">House</option>
                                     <option value="plot">Plot</option>
+                                    <option value="apartments">Apartments</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="condos">Condos</option>
+                                    <option value="villas">Villas</option>
+                                    <option value="lofts">Lofts</option>
                                 </select>
                                 <span class="text-danger">@error('type'){{$message}}@enderror</span>
                             </div>
