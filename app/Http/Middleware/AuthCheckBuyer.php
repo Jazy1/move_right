@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Buyer;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthCheckBuyer
@@ -17,7 +18,10 @@ class AuthCheckBuyer
     public function handle(Request $request, Closure $next): Response
     {
         if (!(session()->has("LoggedBuyer"))) {
-            return redirect(route("public.home"))->with("buyerFail", "Login first.");
+            $previous = URL::previous() . "?next=" . urlencode(URL::current());
+
+            return redirect($previous)->with("buyerFail", "Login first.");
+            
         }
 
         // Passing down users data for the template

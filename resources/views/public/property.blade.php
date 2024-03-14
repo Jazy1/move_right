@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-lg-6 text-lg-end">
                     <div class="d-inline-block md-mt-40">
-                        <div class="price color-dark fw-500">Price: £{{ $property->price }} </div>
+                        <div class="price color-dark fw-500">{{ $property->list_in == "rent" ? "Rent/month" : "Price" }}: £{{ $property->price }} </div>
                         <div class="est-price fs-20 mt-25 mb-35 md-mb-30">
                             {{-- Est. Payment <span class="fw-500 color-dark">$8,343/mo*</span> --}}
                         </div>
@@ -740,7 +740,8 @@
                             </div>
 
                             <!-- /.divider-line -->
-                            <a href="{{ route("public.landlord", $property->landlord->id) }}" class="btn-nine text-uppercase rounded-3 w-100 mb-10">AGENT</a>
+                            <a href="{{ route("public.landlord", $property->landlord->id) }}" class="btn-nine text-uppercase rounded-3 w-100 mb-10">Landlord Profile</a>
+                            <a href="{{ $property->list_in == "rent" ? route("public.contract.rent", ["property_id" => $property->id]) : route("public.contract.sell", ["property_id" => $property->id]) }}" class="btn-nine text-uppercase rounded-3 w-100 mb-10">{{ $property->list_in == "rent" ? "Rent" : "Sell" }} this Property</a>
                         </div>
                         <!-- /.agent-info -->
 

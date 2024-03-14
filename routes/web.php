@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
@@ -24,6 +25,15 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get("/", [PublicController::class, "home"])->name("public.home");
+
+Route::middleware(["AuthCheckBuyer"])->group(function(){
+    Route::get("/rent-contract", [ContractController::class, "rentContract"])->name("public.contract.rent");
+    Route::get("/sell-contract", [ContractController::class, "sellContract"])->name("public.contract.sell");
+    
+    Route::post("/rent-contract", [ContractController::class, "rentCreateContract"])->name("public.contract.rent");
+    Route::post("/sell-contract", [ContractController::class, "sellCreateContract"])->name("public.contract.sell");
+});
+
 Route::get("/property/{id}", [PropertyController::class, "show"])->name("public.property");
 Route::get("/landlord/{id}", [LandlordController::class, "show"])->name("public.landlord");
 Route::get("/listings", [PublicController::class, "search"])->name("public.listings");

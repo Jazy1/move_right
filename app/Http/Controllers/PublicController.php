@@ -57,11 +57,7 @@ class PublicController extends Controller
         ]);
 
     }
-
-    function contact(Request $request) {
-        return view("public.contact");
-    }
-
+    
     private function extractPriceRange($priceRange)
     {
         // Assuming that the price range format is like "$10,000 - $200,000"

@@ -93,7 +93,14 @@ class BuyerController extends Controller
             if (password_verify($password, $buyer->password)) {
                 // Password is correct, create a session and return the user ID
                 session()->put(["LoggedBuyer" => $buyer->id]);
-                return redirect()->route("buyers.dashboard");
+
+                return redirect()->back();
+                // if ($request->filled("next")) {
+                // }else{
+                //     error_log($request->input("next"));
+                //     return redirect()->route("buyers.dashboard");
+                // }
+
             } else {
                 // Password is incorrect
                 return redirect()->back()->with("buyerFail", "Password is not correct");

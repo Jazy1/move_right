@@ -98,6 +98,25 @@ Entities so far
 		about
 		location_id
 		profile_picture
+	
+	contract
+		id
+		created_at
+		updated_at
+		landlord_id
+		buyer_id
+		property_id
+		landlord_signature
+		buyer_signature
+		list_in
+			rent
+			sell
+		from
+		to
+		status
+			valid
+			nullNvoid
+
 
 Todo
 	Signup landlord (done)

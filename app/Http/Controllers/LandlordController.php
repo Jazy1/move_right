@@ -94,7 +94,9 @@ class LandlordController extends Controller
             if (password_verify($password, $landlord->password)) {
                 // Password is correct, create a session and return the user ID
                 session()->put(["LoggedLandlord" => $landlord->id]);
+                
                 return redirect()->route("landlords.dashboard");
+
             } else {
                 // Password is incorrect
                 return redirect()->back()->with("fail", "Password is not correct");
