@@ -50,4 +50,9 @@ class Property extends Model
     {
         return $this->belongsTo(Subletter::class, 'subletter_id');
     }
+
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+    }
 }

@@ -27,11 +27,10 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [PublicController::class, "home"])->name("public.home");
 
 Route::middleware(["AuthCheckBuyer"])->group(function(){
-    Route::get("/rent-contract", [ContractController::class, "rentContract"])->name("public.contract.rent");
-    Route::get("/sell-contract", [ContractController::class, "sellContract"])->name("public.contract.sell");
-    
-    Route::post("/rent-contract", [ContractController::class, "rentCreateContract"])->name("public.contract.rent");
-    Route::post("/sell-contract", [ContractController::class, "sellCreateContract"])->name("public.contract.sell");
+    Route::get("/rent-contract", [ContractController::class, "rentContract"])->name("public.contract.rent.create");
+    Route::get("/sell-contract", [ContractController::class, "sellContract"])->name("public.contract.sell.create");
+
+    Route::get("/contract/{id}", [ContractController::class, "show"])->name("public.contract.rent");
 });
 
 Route::get("/property/{id}", [PropertyController::class, "show"])->name("public.property");
@@ -83,6 +82,19 @@ Route::prefix("buyers")->group(function(){
         Route::get('/doggy', function(){
             return "soda";
         }); //for testing whether guards are working correctly or not
+
+        Route::prefix("contracts")->group(function(){
+            Route::get("/", [ContractController::class, "index"])->name("buyers.contracts");
+            Route::post("/", [ContractController::class, "store"])->name("buyers.contracts.store");
+            Route::get("{contract}/nullNvoid", [ContractController::class, "nullNvoid"])->name("buyers.contracts.nullNvoid");
+            // Route::get("create", [PropertyController::class, "create"])->name("landlords.properties.create");
+            // Route::post("/", [PropertyController::class, "store"])->name("landlords.properties.store");
+            // Route::get("{property}/edit", [PropertyController::class, "edit"])->name("landlords.properties.edit");
+            // Route::put("{property}/edit", [PropertyController::class, "update"])->name("landlords.properties.update");
+            // Route::get("{property}/delete", [PropertyController::class, "destroy"])->name("landlords.properties.delete");
+            // Route::get('get-areas-by-city', [LocationController::class, 'getAreasByCity'])->name("landlords.properties.getAreasByCity");
+
+        });
 
         Route::get("properties", [BuyerController::class, "properties"]);
 

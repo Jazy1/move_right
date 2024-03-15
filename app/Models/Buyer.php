@@ -12,4 +12,9 @@ class Buyer extends Model
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'about', 'location_id', 'profile_picture'
     ];
+
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+    }
 }

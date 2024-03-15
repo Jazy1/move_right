@@ -10,21 +10,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 
-class LandlordController extends Controller
-{
-    public function index()
-    {
+class LandlordController extends Controller{
+    
+    public function index(){
         $landlords = Landlord::all();
         return view('landlords.index', compact('landlords'));
     }
 
-    public function create()
-    {
+    public function create(){
         return view('landlords.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 
         // Create a new Landlord instance
         $landlord = new Landlord([
@@ -44,8 +41,7 @@ class LandlordController extends Controller
         ]);
     }
 
-    public function show($id)
-    {
+    public function show($id){
         $landlord = Landlord::find($id);
         $properties = $landlord->properties;
         
@@ -55,13 +51,11 @@ class LandlordController extends Controller
         ]);
     }
 
-    public function edit(Landlord $landlord)
-    {
+    public function edit(Landlord $landlord){
         return view('landlords.edit', compact('landlord'));
     }
 
-    public function update(Request $request, Landlord $landlord)
-    {
+    public function update(Request $request, Landlord $landlord){
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:landlords,email,' . $landlord->id,
@@ -74,8 +68,7 @@ class LandlordController extends Controller
             ->with('success', 'Landlord updated successfully');
     }
 
-    public function destroy(Landlord $landlord)
-    {
+    public function destroy(Landlord $landlord){
         $landlord->delete();
 
         return redirect()->route('landlords.index')

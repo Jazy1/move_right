@@ -31,11 +31,14 @@
                     <span>Membership</span>
                 </a></li> --}}
                 <li class="bottom-line pt-30 lg-pt-20 mb-40 lg-mb-30"></li>
-                <li><div class="nav-title">Listing</div></li>
-                <li class="plr"><a href="{{ route("landlords.properties") }}" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_6.svg") }} " alt="">
-                    <span>My Properties</span>
-                </a></li>
+                <li><div class="nav-title">Contracts</div></li>
+                <li class="plr">
+                    <a href="{{ route("buyers.contracts") }}" class="d-flex w-100 align-items-center">
+                        <img src=" {{ asset("dashboard/images/icon/icon_6.svg") }} " alt="">
+                        <span>My Contracts</span>
+                    </a>
+                </li>
+
                 {{-- <li class="plr"><a href="{{ route("landlords.properties.create") }}" class="d-flex w-100 align-items-center">
                     <img src=" {{ asset("dashboard/images/icon/icon_7.svg") }} " alt="">
                     <span>Add New Property</span>

@@ -32,7 +32,7 @@
         }
 
         .file-preview {
-            /* display: none; */
+            display: none;
             max-width: 100%;
             border-bottom: 1px dashed #ccc; /* Add dash border */
             margin-top: 5px;
@@ -57,6 +57,12 @@
         }
     </style>
     <div id="outputPage" class="snipcss-nPzl5">
+        <form action="{{ route("buyers.contracts.store") }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="landlord_id" value="{{ $property->landlord->id }}">
+            <input type="hidden" name="property_id" value="{{ $property->id }}">
+            <input type="hidden" name="buyer_id" value="{{ $buyer->id }}">
+            <input type="hidden" name="list_in" value="{{ $property->list_in }}">
 
             <div data-exp="simple2" class="outputVersion1 template_GENERIC templated">
                 <div id="style-wmVyj" class="style-wmVyj">
@@ -71,19 +77,19 @@
                     </div>
                     <div>
                         <h1>Assured Shorthold Tenancy Agreement</h1>
-                        <p id="style-oroAo" class="style-oroAo"><strong>THIS AGREEMENT </strong>dated this {{ date('jS', strtotime($contract->from) ) }} day of {{ date('F', strtotime($contract->from)) }}, {{ date('Y', strtotime($contract->from)) }} (the "Agreement"). </p>
+                        <p id="style-oroAo" class="style-oroAo"><strong>THIS AGREEMENT </strong>dated this {{ date('jS') }} day of {{ date('F') }}, {{ date('Y') }} (the "Agreement"). </p>
                         <div class="partiesContainer">
                             <div class="parties">
                                 <div class="single">
                                     <h2> Landlord </h2>
                                     <div class="detail">
-                                        <span class="name">{{ $contract->landlord->name }}</span>
+                                        <span class="name">{{ $property->landlord->name }}</span>
                                     </div><span class="titleSentence">(the "Landlord")</span>
                                 </div>
                                 <div class="single">
                                     <h2> Tenant </h2>
                                     <div class="detail">
-                                        <span class="name">{{ $contract->buyer->name }}</span>
+                                        <span class="name">{{ $buyer->name }}</span>
                                     </div><span class="titleSentence">(the "Tenant")</span>
                                 </div>
                             </div>
@@ -104,21 +110,21 @@
                             <ol start="1">
                                 <li class="lh style-H1oPE" id="style-H1oPE"><strong><u><span>Let Property</span></u></strong><strong><u><br></u></strong>
                                 </li>
-                                <li value="1" id="style-ccGcp" class="style-ccGcp"><span>The Landlord agrees to let to the Tenant, and the Tenant agrees to take a tenancy of the house, known as and forming {{ $contract->property->address }} (the "Property"), for use as residential premises only. </span><br>
+                                <li value="1" id="style-ccGcp" class="style-ccGcp"><span>The Landlord agrees to let to the Tenant, and the Tenant agrees to take a tenancy of the house, known as and forming {{ $property->address }} (the "Property"), for use as residential premises only. </span><br>
                                 </li>
                                 <li value="2" id="style-LkZTT" class="style-LkZTT"><span>Smoking is permitted on the Property. The Tenant will be responsible for all damage caused by smoking including, but not limited to, stains, burns, odours and removal of debris.</span><br>
                                 </li>
                                 <li class="lh style-WvFtB" id="style-WvFtB"><strong><u><span>Term</span></u></strong><strong><u><br></u></strong>
                                 </li>
-                                <li value="3" id="style-k4MYr" class="style-k4MYr"><span>The term of the tenancy commences on <input type="date" name="from" value="{{ $contract->from }}" readonly>  and ends on <input type="date" name="to" value="{{ $contract->to }}" readonly> (the "Term").</span><br>
+                                <li value="3" id="style-k4MYr" class="style-k4MYr"><span>The term of the tenancy commences on <input type="date" name="from" value="{{ date('Y-m-d') }}" readonly>  and ends on <input type="date" name="to" required> (the "Term").</span><br>
                                 </li>
                                 <li value="4" id="style-BowrC" class="style-BowrC"><span>Should neither party have brought the Tenancy to an end at or before the expiry of the Term, then a new tenancy from month to month will be created between the Landlord and the Tenant which will be subject to all the terms and conditions of this Agreement but will be terminable upon the Landlord giving the Tenant the notice required under the applicable legislation of England (the "Act").</span><br>
                                 </li>
                                 <li class="lh style-pNN3m" id="style-pNN3m"><strong><u><span>Rent</span></u></strong><strong><u><br></u></strong>
                                 </li>
-                                <li value="5" id="style-s32Bn" class="style-s32Bn"><span>Subject to the provisions of this Agreement, the rent for the Property is £{{ $contract->property->price }}</span> per month (the "Rent").<br>
+                                <li value="5" id="style-s32Bn" class="style-s32Bn"><span>Subject to the provisions of this Agreement, the rent for the Property is £{{ $property->price }}</span> per month (the "Rent").<br>
                                 </li>
-                                <li value="6" id="style-S1mW5" class="style-S1mW5"><span>The Tenant will pay the Rent in advance, on or before the first of each and every month of the Term to the Landlord at {{ $contract->property->landlord->location->area->name }}, {{ $contract->property->location->city->name }}, UK or at such other place as the Landlord may later designate by cash or electronic payment using an online money transfer service.</span><br>
+                                <li value="6" id="style-S1mW5" class="style-S1mW5"><span>The Tenant will pay the Rent in advance, on or before the first of each and every month of the Term to the Landlord at {{ $property->landlord->location->area->name }}, {{ $property->location->city->name }}, UK or at such other place as the Landlord may later designate by cash or electronic payment using an online money transfer service.</span><br>
                                 </li>
                                 <li class="lh style-yK5VR" id="style-yK5VR"><strong><u><span>Tenant Improvements</span></u></strong><strong><u><br></u></strong>
                                 </li>
@@ -218,22 +224,22 @@
                                 </li>
                                 <li value="30" id="style-7XyOQ" class="style-7XyOQ"><span>For any matter relating to this tenancy, the Tenant may be contacted at the Property or through the phone number below:</span><br>
                                     <ol start="1">
-                                        <li value="1" id="style-HdkrD" class="style-HdkrD"><span>Name: {{ $contract->buyer->name }}.</span><br>
+                                        <li value="1" id="style-HdkrD" class="style-HdkrD"><span>Name: {{ $buyer->name }}.</span><br>
                                         </li>
-                                        <li value="2" id="style-Vg46N" class="style-Vg46N"><span>Phone: &nbsp;{{ $contract->buyer->number }}.</span><br>
+                                        <li value="2" id="style-Vg46N" class="style-Vg46N"><span>Phone: &nbsp;{{ $buyer->number }}.</span><br>
                                         </li>
                                     </ol>
                                 </li>
                                 <li value="31" id="style-qIGOp" class="style-qIGOp"><span>For any matter relating to this tenancy, whether during or after this tenancy has been terminated, the Landlord's address for notice is:</span><br>
                                     <ol start="1">
-                                        <li value="1" id="style-dXHLZ" class="style-dXHLZ"><span>Name: {{ $contract->landlord->name }}.</span><br>
+                                        <li value="1" id="style-dXHLZ" class="style-dXHLZ"><span>Name: {{ $property->landlord->name }}.</span><br>
                                         </li>
-                                        <li value="2" id="style-UIHLR" class="style-UIHLR"><span>Address: {{ $contract->landlord->location->area->name }}, {{ $contract->landlord->location->city->name }}, UK.</span><br>
+                                        <li value="2" id="style-UIHLR" class="style-UIHLR"><span>Address: {{ $property->landlord->location->area->name }}, {{ $property->landlord->location->city->name }}, UK.</span><br>
                                         </li>
                                     </ol>
                                     <p id="style-bzeJ7" class="style-bzeJ7">The contact information for the Landlord is: </p>
                                     <ol start="3">
-                                        <li value="3" id="style-8Lo1E" class="style-8Lo1E"><span>Phone: &nbsp;{{ $contract->landlord->phone }}.</span><br>
+                                        <li value="3" id="style-8Lo1E" class="style-8Lo1E"><span>Phone: &nbsp;{{ $property->landlord->phone }}.</span><br>
                                         </li>
                                     </ol>
                                 </li>
@@ -264,7 +270,7 @@
                             </ol>
                         </div>
                         <div class=" signature keepTogether">
-                            <p id="style-2odJ8" class="style-2odJ8"><strong>IN WITNESS WHEREOF </strong>{{ $contract->landlord->name }} and {{ $contract->buyer->name }} have duly affixed their signatures on this {{ date('jS', strtotime($contract->from)) }} day of {{ date('F', strtotime($contract->from)) }}, {{ date('Y', strtotime($contract->from)) }}. </p>
+                            <p id="style-2odJ8" class="style-2odJ8"><strong>IN WITNESS WHEREOF </strong>{{ $property->landlord->name }} and {{ $buyer->name }} have duly affixed their signatures on this {{ date('jS') }} day of {{ date('F') }}, {{ date('Y') }}. </p>
                             <table id="style-eh1FF" class="style-eh1FF">
                                 <colgroup>
                                     <col id="style-GVMhK" class="style-GVMhK">
@@ -278,11 +284,11 @@
                                         <td id="style-P1ekL" class="style-P1ekL">
                                             <p id="style-cdMrY" class="style-cdMrY">
                                                 <div class="file-container">
-                                                    <label for="landlord_signature" class="file-label">Landlord Signature</label>
-                                                    {{-- <input type="file" name="landlord_signature" id="landlord_signature" class="file-input" required> --}}
-                                                    <img src="{{ Storage::url($contract->landlord_signature) }}" alt="Landlord Signature Preview" class="file-preview" id="landlordSignaturePreview">
+                                                    <label for="landlord_signature" class="file-label">Upload Landlord Signature</label>
+                                                    <input type="file" name="landlord_signature" id="landlord_signature" class="file-input" required>
+                                                    <img src="#" alt="Landlord Signature Preview" class="file-preview" id="landlordSignaturePreview">
                                                 </div>
-                                                <br> {{ $contract->landlord->name }}</p>
+                                                <br> {{ $property->landlord->name }}</p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -300,13 +306,13 @@
                                         <td id="style-nE4lK" class="style-nE4lK">
                                             <p id="style-iw8Q8" class="style-iw8Q8">
                                                 <div class="file-container">
-                                                    <label for="buyer_signature" class="file-label">Buyer Signature</label>
-                                                    {{-- <input type="file" name="buyer_signature" id="buyer_signature" class="file-input" required> --}}
-                                                    <img src="{{ Storage::url($contract->buyer_signature) }}" alt="Buyer Signature Preview" class="file-preview" id="buyerSignaturePreview">
+                                                    <label for="buyer_signature" class="file-label">Upload Buyer Signature</label>
+                                                    <input type="file" name="buyer_signature" id="buyer_signature" class="file-input" required>
+                                                    <img src="#" alt="Buyer Signature Preview" class="file-preview" id="buyerSignaturePreview">
                                                 </div>
 
 
-                                                <br> {{ $contract->buyer->name }}  </p>
+                                                <br> {{ $buyer->name }}  </p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -327,10 +333,10 @@
                             </table> --}}
                         </div>
                     </div>
-                    {{-- <center>
+                    <center>
                         <button class="big-blue-button">Submit</button>
 
-                    </center> --}}
+                    </center>
                     <div class=" header">
                         <span class="content">Tenancy Agreement</span>
                         <span class="pageNumbers">Page <span class="currentPageNum"></span> of <span class="totalPageNum"></span></span>
@@ -342,7 +348,7 @@
                     <p>©2002-2024 move_right.co.uk®</p>
                 </div>
             </div>
-        
+        </form>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

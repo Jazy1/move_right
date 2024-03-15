@@ -17,6 +17,11 @@ class Landlord extends Model
     {
         return $this->hasMany(Property::class);
     }
+    
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+    }
 
     public function location()
     {

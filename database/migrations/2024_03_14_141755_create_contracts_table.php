@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('list_in', ['sell', 'rent'])->nullable();
             $table->text('from')->nullable();
             $table->text('to')->nullable();
+            $table->text('uuid')->nullable();
             $table->enum('status', ['valid', 'nullNvoid'])->nullable();
         });
     }

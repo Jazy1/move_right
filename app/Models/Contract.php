@@ -18,6 +18,7 @@ class Contract extends Model
         'list_in',
         'from',
         'to',
+        'uuid',
         'status'
     ];
 
