@@ -47,13 +47,14 @@
         </div> --}}
         <div class="user-data position-relative">
             <button class="user-avatar online position-relative rounded-circle dropdown-toggle" type="button" id="profile-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                <img src=" {{ asset("/images/lazy.svg") }} " data-src=" {{ $landlord->profile_picture ?? Storage::url("profile-pictures/default.svg") }} " alt="" class="lazy-img">
+                <img src=" {{ asset("/images/lazy.svg") }} " data-src="{{ $buyer->profile_picture ? Storage::url($buyer->profile_picture) : Storage::url("profile-pictures/default.svg") }}
+                " alt="" class="lazy-img">
             </button>
             <!-- /.user-avatar -->
             <div class="user-name-data">
                 <ul class="dropdown-menu" aria-labelledby="profile-dropdown">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="profile.html"><img src="../images/lazy.svg" data-src=" {{ asset("dashboard/images/icon/icon_23.svg") }} " alt="" class="lazy-img"><span class="ms-2 ps-1">Profile</span></a>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route("buyers.profile", $buyer->id) }}"><img src="../images/lazy.svg" data-src=" {{ asset("dashboard/images/icon/icon_23.svg") }} " alt="" class="lazy-img"><span class="ms-2 ps-1">Profile</span></a>
                     </li>
                     {{-- <li>
                         <a class="dropdown-item d-flex align-items-center" href="account-settings.html"><img src="../images/lazy.svg" data-src=" {{ asset("dashboard/images/icon/icon_24.svg") }} " alt="" class="lazy-img"><span class="ms-2 ps-1">Account Settings</span></a>

@@ -18,7 +18,7 @@ class AuthCheckBuyer
     public function handle(Request $request, Closure $next): Response
     {
         if (!(session()->has("LoggedBuyer"))) {
-            $previous = URL::previous() . "?next=" . urlencode(URL::current());
+            $previous = URL::previous();
 
             return redirect($previous)->with("buyerFail", "Login first.");
             

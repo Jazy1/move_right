@@ -12,7 +12,7 @@
     <div class="dashboard-body">
         <div class="position-relative">
             <!-- ************************ Header **************************** -->
-            <x-landlords.header />
+            <x-landlords.header :buyer="$buyer"/>
             <!-- End Header -->
 
             <h2 class="main-title d-block d-lg-none">Add New Property</h2>

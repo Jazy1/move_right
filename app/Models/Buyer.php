@@ -17,4 +17,9 @@ class Buyer extends Model
     {
         return $this->hasMany(Contract::class);
     }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
 }

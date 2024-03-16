@@ -1,6 +1,6 @@
 @extends('landlords.layouts.parent')
 
-@section('title', "Properties | Move Right®")
+@section('title', "Contracts | Move Right®")
 
 @section('content')
     
@@ -13,7 +13,7 @@
             <x-landlords.header :landlord="$landlord" />
             <!-- End Header -->
 
-            <h2 class="main-title d-block d-lg-none">My Properties</h2>
+            <h2 class="main-title d-block d-lg-none">My Contracts</h2>
             {{-- <div class="d-sm-flex align-items-center justify-content-between mb-25">
                 <div class="fs-16">Showing <span class="color-dark fw-500">1–5</span> of <span class="color-dark fw-500">40</span> results</div>
                 <div class="d-flex ms-auto xs-mt-30">
@@ -35,37 +35,59 @@
                     <table class="table property-list-table">
                         <thead>
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Type</th>
+                                <th scope="col">Property</th>
+                                <th scope="col">Buyer</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">For</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody class="border-0">
 
-                            @foreach ($properties as $property)
+                            @foreach ($contracts as $contract)
+                                @php
+                                    $property = $contract->property;
+                                    $landlord = $contract->landlord;
+                                    $buyer = $contract->buyer;
 
+                                @endphp
                                 <tr>
                                     <td>
                                         <div class="d-lg-flex align-items-center position-relative">
                                             <img src="{{ isset($property->media[0]) ? Storage::url($property->media[0]) : asset('images/icon/image-placeholder.svg') }}" alt="" class="p-img">
                                             <div class="ps-lg-4 md-pt-10">
-                                                <a href="{{ route("landlords.properties.edit", $property->id) }}" class="property-name tran3s color-dark fw-500 fs-20 stretched-link"> {{ $property->title }} </a>
+                                                <a href="{{ route("public.property", $property->id) }}" target="_blank" class="property-name tran3s color-dark fw-500 fs-20 stretched-link" > {{ $property->title }} </a>
                                                 <div class="address">{{ $property->address }}, {{ $property->location->area->name }}, {{ $property->location->city->name }}, UK</div>
                                                 <strong class="price color-dark">£{{ $property->price }}</strong>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ \Carbon\Carbon::parse($property->created_on)->format('d-m-Y') }}</td>
-                                    <td>{{ ucfirst($property->type) }}</td>
+                                    <td style="padding: 0px 0px;">
+                                        <div class="d-lg-flex align-items-center position-relative">
+                                            {{-- <img src="{{ isset($property->media[0]) ? Storage::url($property->media[0]) : asset('images/icon/image-placeholder.svg') }}" alt="" class="p-img"> --}}
+                                            <div class="ps-lg-4 md-pt-10">
+                                                <a class="property-name tran3s color-dark fw-500 fs-20 stretched-link" > {{ $buyer->name }} </a>
+                                                <div class="address">{{ $buyer->location->area->name }}, {{ $buyer->location->city->name }}, UK</div>
+                                                <div class="address">{{ $buyer->phone }}</div>
+                                                {{-- <strong class="price color-dark">£{{ $property->price }}</strong> --}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    {{-- <td> 
+                                        <a href="{{ route("public.landlord", $landlord->id) }}" target="_blank" style="cursor: pointer;" >{{ $landlord->name }}</a> 
+                                    </td> --}}
+                                    <td style="padding: 15px 0px;">{{ \Carbon\Carbon::parse($contract->from)->format('d-m-Y') }}</td>
+                                    <td style="padding: 35px 10px;">{{ \Carbon\Carbon::parse($contract->to)->format('d-m-Y') }}</td>
+                                    <td>{{ ucfirst($contract->list_in) }}</td>
                                     <td>
                                         @php
-                                            $isAvailable = $property->status == "available" ? true : false
+                                            $isValid = $contract->status == "valid" ? true : false
                                         @endphp
                                         
-                                        <div class="property-status {{ !$isAvailable ? "pending" : "" }} ">
-                                            {{ $isAvailable ? "Available" : "Unavailable" }}
+                                        <div class="property-status {{ !$isValid ? "pending" : "" }} " >
+                                            {{ $isValid ? "Valid" : "Null&Void" }}
                                         </div>
                                     </td>
 
@@ -75,16 +97,22 @@
                                                 <span></span>
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="{{ route("public.property", $property->id) }}" target="_blank"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_18.svg") }} " alt="" class="lazy-img"> View</a></li>
-                                            {{-- <li><a class="dropdown-item" href="#"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_19.svg") }}" alt="" class="lazy-img"> Share</a></li> --}}
-                                            <li><a class="dropdown-item" href="{{ route("landlords.properties.edit", $property->id) }}" ><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_20.svg") }}" alt="" class="lazy-img"> Edit</a></li>
-                                            <li><a class="dropdown-item" href="{{ route("landlords.properties.delete", $property->id) }}"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_21.svg") }}" alt="" class="lazy-img"> Delete</a></li>
-                                            </ul>
-                                        </div>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route("public.contract.rent", $contract->id) }}" target="_blank"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_18.svg") }} " alt="" class="lazy-img"> View</a>
+                                            </li>
+                                            {{-- <li>
+                                                <a class="dropdown-item" href="{{ route("landlords.properties.edit", $property->id) }}" ><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_20.svg") }}" alt="" class="lazy-img"> Edit</a>
+                                            </li> --}}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route("landlords.contracts.nullNvoid", $contract->id) }}"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_21.svg") }}" alt="" class="lazy-img"> Null & Void</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     </td>
                                 </tr>
-                            
-                            @endforeach
+                                
+                                @endforeach
+                                {{-- <li><a class="dropdown-item" href="#"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_19.svg") }}" alt="" class="lazy-img"> Share</a></li> --}}
 
                             {{-- <tr>
                                 <td>

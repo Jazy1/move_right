@@ -57,7 +57,7 @@
 			Dashboard Aside Menu
 		============================================== 
 		-->
-		<x-buyers.aside />
+		<x-buyers.aside :buyer="$buyer"/>
 		<!-- /.dash-aside-navbar -->
 
 		<!-- 

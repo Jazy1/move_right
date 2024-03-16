@@ -57,6 +57,12 @@ class PublicController extends Controller
         ]);
 
     }
+
+    function contact() {
+
+        return view("public.contact");
+        
+    }
     
     private function extractPriceRange($priceRange)
     {

@@ -1,7 +1,7 @@
 <aside class="dash-aside-navbar">
     <div class="position-relative">
         <div class="logo d-md-block d-flex align-items-center justify-content-between plr bottom-line pb-30">
-            <a href="{{ route("buyers.dashboard") }}">
+            <a href="{{ route("public.home") }}">
                 <img src=" {{ asset("images/logo/logo_07.svg") }}" alt="">
             </a>
             <button class="close-btn d-block d-md-none"><i class="fa-light fa-circle-xmark"></i></button>
@@ -18,14 +18,14 @@
                 </a></li> --}}
                 <li class="bottom-line pt-30 lg-pt-20 mb-40 lg-mb-30"></li>
                 <li><div class="nav-title">Profile</div></li>
-                <li class="plr"><a href="profile.html" class="d-flex w-100 align-items-center">
+                <li class="plr"><a href="{{ route("buyers.profile", $buyer->id) }}" class="d-flex w-100 align-items-center">
                     <img src=" {{ asset("dashboard/images/icon/icon_3.svg") }} " alt="">
                     <span>Profile</span>
                 </a></li>
-                <li class="plr"><a href="account-settings.html" class="d-flex w-100 align-items-center">
+                {{-- <li class="plr"><a href="account-settings.html" class="d-flex w-100 align-items-center">
                     <img src=" {{ asset("dashboard/images/icon/icon_4.svg") }} " alt="">
                     <span>Account Settings</span>
-                </a></li>
+                </a></li> --}}
                 {{-- <li class="plr"><a href="membership.html" class="d-flex w-100 align-items-center">
                     <img src=" {{ asset("dashboard/images/icon/icon_5.svg") }} " alt="">
                     <span>Membership</span>

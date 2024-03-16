@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Buyer;
 use App\Http\Requests\StoreBuyerRequest;
 use App\Http\Requests\UpdateBuyerRequest;
+use App\Models\Area;
+use App\Models\City;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,6 +52,59 @@ class BuyerController extends Controller
         ]);
     }
 
+    public function profile(Request $request){
+        $buyer = Buyer::find($request->buyer->id);
+        $cities = City::all();
+        $areas = Area::all();
+
+        return view('buyers.profile', [
+            "buyer" => $buyer,
+            "cities" => $cities,
+            "areas" => $areas
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $buyer = Buyer::findOrFail($id);
+
+        // Create a new Location only if it is changed, also deleting the older ones
+        $hasCityChanged = $buyer->location->city->id != $request->city_id ? true : false;
+        $hasAreaChanged = $buyer->location->area->id != $request->area_id ? true : false;
+
+        if ($hasCityChanged || $hasAreaChanged) {
+            $buyer->location->delete();
+            $location = Location::create([
+                'city_id' => $request->city_id,
+                'area_id' => $request->area_id,
+            ]);
+        }
+        
+        // Add location_id to the validatedData
+        $location_id = $location->id ?? $buyer->location->id;
+
+        // Update name and email
+        $buyer->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'about' => $request->about,
+            'location' => $location_id
+        ]);
+
+        // Update profile image
+        if ($request->hasFile('profile_picture')) {
+            $fileName = time(). "_" . $request->file('profile_picture')->getClientOriginalName();
+            $path = $request->file('profile_picture')->storeAs('public/profile-pictures', $fileName);
+
+            $buyer->update([
+                'profile_picture' => $path,
+            ]);
+
+        }
+
+        return back()->with('success', 'Profile updated successfully.');
+    }
+
     /**
      * Display the specified resource.
      */
@@ -61,14 +117,6 @@ class BuyerController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Buyer $buyer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateBuyerRequest $request, Buyer $buyer)
     {
         //
     }
@@ -120,8 +168,10 @@ class BuyerController extends Controller
         }
     }
 
-    public function dashboard(){
+    public function dashboard(Request $request){
         // return "Dashboard <a href=" . route('buyers.logout') . ">Logout";
-        return view("buyers.dashboard");
+        return view("buyers.dashboard", [
+            "buyer" => $request->buyer
+        ]);
     }
 }

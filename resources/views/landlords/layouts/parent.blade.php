@@ -57,7 +57,7 @@
 			Dashboard Aside Menu
 		============================================== 
 		-->
-		<x-landlords.aside />
+		<x-landlords.aside :landlord="$landlord" />
 		<!-- /.dash-aside-navbar -->
 
 		<!-- 

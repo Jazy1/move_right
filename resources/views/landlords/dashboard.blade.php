@@ -14,7 +14,7 @@
 	<div class="dashboard-body">
 		<div class="position-relative">
 			<!-- ************************ Header **************************** -->
-			<x-landlords.header />
+			<x-landlords.header :landlord="$landlord"/>
 			<!-- End Header -->
 
 			<h2 class="main-title d-block d-lg-none">Dashboard</h2>

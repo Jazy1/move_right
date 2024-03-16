@@ -31,11 +31,21 @@ class ContractController extends Controller
         
     }
 
-    public function index(Request $request){
+    public function indexBuyer(Request $request){
         $contracts =  Contract::where("buyer_id", $request->buyer->id)->get();
 
         return view("buyers.contracts.contracts", [
-            "contracts" => $contracts
+            "contracts" => $contracts,
+            "buyer" => $request->buyer
+        ]);
+    }
+    
+    public function indexLandlord(Request $request){
+        $contracts =  Contract::where("landlord_id", $request->landlord->id)->get();
+
+        return view("landlords.contracts.contracts", [
+            "contracts" => $contracts,
+            "landlord" => $request->landlord
         ]);
     }
 
@@ -73,6 +83,12 @@ class ContractController extends Controller
             $contract->buyer_signature = $path;
             $contract->save();
         }
+
+        // Update property status
+        Property::find($request->input("property_id"))->update([
+            "status" => "unavailable",
+        ]);
+
         return redirect(route("buyers.contracts"))->with("success", "Contract Signed Successfully");
         return "Contract Created successfully";
     }
@@ -80,11 +96,12 @@ class ContractController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id){
+    public function show($id, Request $request){
         $contract = Contract::findOrFail($id);
 
         return view("public.contracts.rent", [
             "contract" => $contract,
+            "landlord" => $request->landlord
         ]);
     }
 
@@ -94,6 +111,10 @@ class ContractController extends Controller
     public function nullNvoid($id){
         $contract = Contract::findOrFail($id);
         $contract->update(['status' => "nullNvoid"]);
+
+        Property::find($contract->property->id)->update([
+            "status" => "available",
+        ]);
 
         return back()->with("success", "Status Updated Successfully");
     }

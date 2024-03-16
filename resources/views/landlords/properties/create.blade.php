@@ -12,7 +12,7 @@
     <div class="dashboard-body">
         <div class="position-relative">
             <!-- ************************ Header **************************** -->
-            <x-landlords.header />
+            <x-landlords.header :landlord="$landlord"/>
             <!-- End Header -->
 
             <h2 class="main-title d-block d-lg-none">Add New Property</h2>
@@ -247,7 +247,7 @@
                         Upload File
                         {{-- <input type="file" id="media" name="media[]" accept=".jpg, .jpeg, .png, .mp4" multiple> --}}
                     </button>
-                    <small>Upload file .jpg .jpeg .png .mp4</small>
+                    <small>Upload file .jpg .jpeg .png</small>
                     <span class="text-danger" id="mediaError"></span>
                 </div>
 

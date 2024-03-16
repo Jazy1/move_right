@@ -9,6 +9,7 @@ use App\Models\Area;
 use App\Models\City;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +22,8 @@ class PropertyController extends Controller
         $properties =  Property::where("landlord_id", $request->landlord->id)->get();
 
         return view("landlords.properties.properties", [
-            "properties" => $properties
+            "properties" => $properties,
+            "landlord" => $request->landlord
         ]);
     }
 
@@ -127,7 +129,7 @@ class PropertyController extends Controller
             $property->save();
         }
 
-        return "Created successfully";
+        return back()->with("success", "Property Created successfully");
         // Redirect to the property details page or index
         // return redirect()->route('properties.show', ['property' => $property->id])->with('success', 'Property created successfully');
     }
@@ -135,11 +137,12 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id){
+    public function show($id, Request $request){
         $property = Property::findOrFail($id);
 
         return view("public.property", [
             "property" => $property,
+            "landlord" => $request->landlord
         ]);
     }
 
@@ -263,7 +266,7 @@ class PropertyController extends Controller
             'uuid' => $uuid,
         ]);
 
-        return "updated succccc";
+        return back()->with("success", "updated successfully") ;
 
     }
 

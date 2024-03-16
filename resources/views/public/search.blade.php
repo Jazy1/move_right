@@ -97,7 +97,7 @@
                         @php
 							$url = isset($property->media[0]) ? Storage::url($property->media[0]) : asset('images/icon/image-placeholder.svg');
 						@endphp
-                        <div class="img-gallery position-relative z-1 border-20 overflow-hidden" style="background-image: url({{ $url }});">
+                        <div class="img-gallery position-relative z-1 border-20 overflow-hidden" style="background-image: url('{{ $url }}');">
 
                             <div class="tag border-20 {{ $property->list_in == "rent" ? "" : "sale"}}">FOR {{ ucfirst($property->list_in) }}</div>
                             <div class="img-slider-btn">
