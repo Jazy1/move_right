@@ -56,7 +56,7 @@ class LandlordController extends Controller{
             'email' => $request->email,
             'phone' => $request->phone,
             'about' => $request->about,
-            'location' => $location_id
+            'location_id' => $location_id
         ]);
 
         // Update profile image
