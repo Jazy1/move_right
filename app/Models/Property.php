@@ -35,7 +35,6 @@ class Property extends Model
         'media' => 'json',
     ];
 
-    // Define relationships if needed
     public function location()
     {
         return $this->belongsTo(Location::class, 'location_id');

@@ -17,6 +17,24 @@
 
             <h2 class="main-title d-block d-lg-none">Add New Property</h2>
 
+            @if (Session::has('success'))
+                <div class="alert alert-success some-space-upNdown" role="alert">
+                    <center style="">
+                        {{ session("success") }}
+                        <br>
+                    </center> 
+                </div>
+            @endif
+
+            @if (Session::has('fail'))
+                <div class="alert alert-danger some-space-upNdown" role="alert">
+                    <center style="">
+                        {{ session("fail") }}
+                        <br>
+                    </center> 
+                </div>
+            @endif
+
             <form action="{{route("landlords.properties.store")}}" method="post" enctype="multipart/form-data">
 
                 @csrf
@@ -80,8 +98,6 @@
                             <input type="checkbox" name="allow_sublet" value="1">
                             <label>Allow Sublet?</label>
                             <div class="dash-input-wrapper mb-30">
-                                {{-- <label for="">Yearly Tax Rate*</label>
-                                <input type="text" placeholder="Tax Rate"> --}}
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
@@ -179,13 +195,6 @@
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
-                        {{-- <div class="col-md-6">
-                            <div class="dash-input-wrapper mb-30">
-                                <label for="">Garage Size</label>
-                                <input type="text" placeholder="Ex: 1,230 sqft">
-                            </div>
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
                         <div class="col-md-6">
                             <div class="dash-input-wrapper mb-30">
                                 <label for="">Year Built*</label>
@@ -194,58 +203,19 @@
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
-                        {{-- <div class="col-md-6">
-                            <div class="dash-input-wrapper mb-30">
-                                <label for="">Floors No*</label>
-                                <select class="nice-select">
-                                    <option value="0">Ground</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
-                        {{-- <div class="col-12">
-                            <div class="dash-input-wrapper">
-                                <label for="">Description*</label>
-                                <textarea class="size-lg" placeholder="Write about property..."></textarea>
-                            </div>
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
+                        
                     </div>
                 </div>
                 <!-- /.card-box -->
 
-                {{-- <div class="bg-white card-box border-20 mt-40">
-                    <h4 class="dash-title-three">Photo & Video Attachment</h4>
-                    <div class="dash-input-wrapper mb-20">
-                        <label for="">File Attachment*</label>
-                        
-                        <div class="attached-file d-flex align-items-center justify-content-between mb-15">
-                            <span>PorpertyImage_01.jpg</span>
-                            <a href="#" class="remove-btn" onclick="removeFile('PorpertyImage_01.jpg')"><i class="bi bi-x"></i></a>
-                            <input type="file" name="">
-                        </div>
-                    </div>
-                    <!-- /.dash-input-wrapper -->
-                    <button type="button" class="dash-btn-one d-inline-block position-relative me-3">
-                        <i class="bi bi-plus"></i>
-                        Upload File
-                    </button>
-                    <small>Upload file .jpg,  .png,  .mp4</small>
-                </div> --}}
-
                 <div class="bg-white card-box border-20 mt-40">
                     <h4 class="dash-title-three">Photo & Video Attachment</h4>
                     <div class="dash-input-wrapper mb-20" id="attachedFilesContainer">
-                        <!-- Attached Files will be dynamically added here -->
                     </div>
                     <!-- /.dash-input-wrapper -->
                     <button type="button" class="dash-btn-one d-inline-block position-relative me-3" onclick="attachFile()">
                         <i class="bi bi-plus"></i>
                         Upload File
-                        {{-- <input type="file" id="media" name="media[]" accept=".jpg, .jpeg, .png, .mp4" multiple> --}}
                     </button>
                     <small>Upload file .jpg .jpeg .png .mp4</small>
                     <span class="text-danger" id="mediaError"></span>
@@ -347,35 +317,6 @@
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
-                        {{-- <div class="col-lg-4">
-                            <div class="dash-input-wrapper mb-25">
-                                <label for="">Country*</label>
-                                <select class="nice-select">
-                                    <option value="0">Select Country</option>
-                                    <option>Afghanistan</option>
-                                    <option>Albania</option>
-                                    <option>Algeria</option>
-                                    <option>Andorra</option>
-                                    <option>Angola</option>
-                                    <option>Antigua and Barbuda</option>
-                                    <option>Argentina</option>
-                                    <option>Armenia</option>
-                                    <option>Australia</option>
-                                    <option>Austria</option>
-                                    <option>Azerbaijan</option>
-                                    <option>Bahamas</option>
-                                    <option>Bahrain</option>
-                                    <option>Bangladesh</option>
-                                    <option>Barbados</option>
-                                    <option>Belarus</option>
-                                    <option>Belgium</option>
-                                    <option>Belize</option>
-                                    <option>Benin</option>
-                                    <option>Bhutan</option>
-                                </select>
-                            </div>
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
                         <div class="col-lg-4">
                             <div class="dash-input-wrapper mb-25">
                                 <label for="city">City*</label>
@@ -399,21 +340,6 @@
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
-                        {{-- <div class="col-12">
-                            <div class="dash-input-wrapper mb-25">
-                                <label for="">Map Location*</label>
-                                <div class="position-relative">
-                                    <input type="text" placeholder="XC23+6XC, Moiran, N105">
-                                    <button class="location-pin tran3s"><img src="../images/lazy.svg" data-src="images/icon/icon_16.svg" alt="" class="lazy-img m-auto"></button>
-                                </div>
-                                <div class="map-frame mt-30">
-                                    <div class="gmap_canvas h-100 w-100">
-                                        <iframe class="gmap_iframe h-100 w-100" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dhaka%20collage&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
                     </div>
                 </div>
                 <!-- /.card-box -->
@@ -445,12 +371,10 @@
                         console.log(data);
                         $('#area').empty();
     
-                        // Add new options
                         $.each(data, function (index, area) {
                             $('#area').append('<option value="' + area.id + '">' + area.name + '</option>');
                         });
     
-                        // Trigger nice-select refresh
                         $('#area').niceSelect('update');
                     }
                 });
@@ -486,7 +410,7 @@
             fileInput.accept = '.jpg, .jpeg, .png, .mp4';
             fileInput.id = inputId;
             fileInput.name = 'media[]';
-            fileInput.style.display = 'none'; // Hide the input
+            fileInput.style.display = 'none'; 
 
             fileContainer.appendChild(fileNameSpan);
             fileContainer.appendChild(removeBtn);
@@ -497,7 +421,6 @@
             }else{
                 attachedFilesContainer.appendChild(fileContainer);
                 count++
-                // fileInput.files = new FileList([file]);
             }
 
         }
@@ -506,7 +429,6 @@
             const fileInput = document.getElementById(id);
             const fileLabel = document.querySelector(`label[for="${id}"]`);
 
-            // console.log(fileInput.files)
             const files = fileInput.files;
 
             for (const file of files) {
@@ -516,7 +438,6 @@
         }
 
         function removeFile(fileContainer) {
-            // Remove the file container from the view
             attachedFilesContainer.removeChild(fileContainer);
             count--
         }

@@ -60,22 +60,12 @@
 								</ul>
 							</div>
 						</div>
-						{{-- <div class="col-xl-3 col-lg-4 col-md-6 mb-30">
-							<h5 class="footer-title">Newsletters</h5>
-							<p class="pt-5">Join & get important new regularly</p>
-							<form action="#" class="newsletter-form position-relative">
-								<input type="email" placeholder="Enter your email">
-								<button class="fw-500 fs-16 text-white tran3s">Send</button>
-							</form>
-							<span class="fs-14 opacity-75">We only send interesting and relevant emails.</span>
-						</div> --}}
 					</div>
 				</div>
 				<!-- /.bg-wrapper -->
 				<div class="bottom-footer">
 					<div class="d-md-flex justify-content-center justify-content-md-between align-items-center">
 						<ul class="style-none bottom-nav d-flex justify-content-center">
-							{{-- <li><a href="faq.html">Privacy &amp; Terms</a></li> --}}
 							<li><a href="{{ route("public.contact") }}">Contact Us</a></li>
 						</ul>
 						<p class="mb-15 text-center text-lg-start fs-16 order-md-first">Copyright @2024 Move Right inc.</p>

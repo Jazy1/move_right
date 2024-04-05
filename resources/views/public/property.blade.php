@@ -34,13 +34,8 @@
                         <div class="d-inline-block md-mt-40">
                             <div class="price color-dark fw-500">{{ $property->list_in == "rent" ? "Rent/month" : "Price" }}: £{{ $property->price }} </div>
                             <div class="est-price fs-20 mt-25 mb-35 md-mb-30">
-                                {{-- Est. Payment <span class="fw-500 color-dark">$8,343/mo*</span> --}}
                             </div>
                             <ul class="style-none d-flex align-items-center action-btns">
-                                {{-- <li class="me-auto fw-500 color-dark"><i class="fa-sharp fa-regular fa-share-nodes me-2"></i> Share</li>  --}}
-                                {{-- <li><a href="#" class="d-flex align-items-center justify-content-center rounded-circle tran3s"><i class="fa-light fa-heart"></i></a></li>  --}}
-                                {{-- <li><a href="#" class="d-flex align-items-center justify-content-center rounded-circle tran3s"><i class="fa-light fa-bookmark"></i></a></li> --}}
-                                {{-- <li><a href="#" class="d-flex align-items-center justify-content-center rounded-circle tran3s"><i class="fa-light fa-circle-plus"></i></a></li> --}}
                                 <li>
                                     <a href="javascript:genPdf()" id="downloadButton" class="d-flex align-items-center justify-content-center rounded-circle tran3s" title="Download Report">
                                         <i class="fas fa-download"></i>
@@ -65,8 +60,6 @@
                                             <a href=" {{ Storage::url($media) }} " class="d-block" data-fancybox="mainImg" ></a>
                                         @endforeach
                                         
-                                        {{-- <a href=" {{ asset("images/listing/img_large_02.jpg") }} " class="d-block" data-fancybox="mainImg" data-caption="Duplex orkit villa."></a>
-                                        <a href=" {{ asset("images/listing/img_large_03.jpg") }} " class="d-block" data-fancybox="mainImg" data-caption="Duplex orkit villa."></a> --}}
                                     </div>
                                     <div class="carousel-inner">
                                         @if (count($property->media) == 0 )
@@ -87,15 +80,6 @@
                                             @endif
                                             
                                         @endforeach
-                                        {{-- <div class="carousel-item">
-                                            <img src=" {{ asset("images/listing/img_44.jpg") }} " alt="" class="border-20 w-100">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src=" {{ asset("images/listing/img_45.jpg") }} " alt="" class="border-20 w-100">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src=" {{ asset("images/listing/img_46.jpg") }} " alt="" class="border-20 w-100">
-                                        </div> --}}
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#media_slider" data-bs-slide="prev">
                                         <i class="bi bi-chevron-left"></i>
@@ -122,15 +106,6 @@
                                         <img src=" {{ Storage::url($media) }} " alt="" class="border-10 w-100">
                                     </button>
                                 @endforeach
-                                {{-- <button type="button" data-bs-target="#media_slider" data-bs-slide-to="1" aria-label="Slide 2">
-                                    <img src=" {{ asset("images/listing/img_44_s.jpg") }} " alt="" class="border-10 w-100">
-                                </button>
-                                <button type="button" data-bs-target="#media_slider" data-bs-slide-to="2" aria-label="Slide 3">
-                                    <img src=" {{ asset("images/listing/img_45_s.jpg") }} " alt="" class="border-10 w-100">
-                                </button>
-                                <button type="button" data-bs-target="#media_slider" data-bs-slide-to="3" aria-label="Slide 4">
-                                    <img src=" {{ asset("images/listing/img_46_s.jpg") }} " alt="" class="border-10 w-100">
-                                </button> --}}
                             </div>
                         </div>
                     </div>
@@ -188,14 +163,10 @@
                                                 <div class="feature-list-two">
                                                     <ul class="style-none d-flex flex-wrap justify-content-between">
                                                         <li><span>Bedrooms: </span> <span class="fw-500 color-dark"> {{ $property->bedrooms }} </span></li>
-                                                        {{-- <li><span>Furnishing: </span> <span class="fw-500 color-dark">Semi furnished</span></li> --}}
                                                         <li><span>Bathrooms: </span> <span class="fw-500 color-dark"> {{ $property->bathrooms }} </span></li>
                                                         <li><span>Year Built: </span> <span class="fw-500 color-dark"> {{ $property->built_year }} </span></li>
-                                                        {{-- <li><span>Floor: </span> <span class="fw-500 color-dark">Ground</span></li> --}}
                                                         <li><span>Garages: </span> <span class="fw-500 color-dark"> {{ $property->garages }} </span></li>
-                                                        {{-- <li><span>Ceiling Height: </span> <span class="fw-500 color-dark">3.2m</span></li> --}}
                                                         <li><span>Property Type: </span> <span class="fw-500 color-dark"> {{ ucfirst($property->type)  }} </span></li>
-                                                        {{-- <li><span>Renovation: </span> <span class="fw-500 color-dark">3.2m</span></li> --}}
                                                         <li><span>Status: </span> <span class="fw-500 color-dark"> {{ ucfirst($property->status)  }} </span></li>
                                                         <li><span>Sublet: </span> <span class="fw-500 color-dark"> {{ $property->status ? "Allowed" : "Not Allowed"  }} </span></li>
                                                     </ul>
@@ -204,55 +175,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoA" aria-expanded="false" aria-controls="collapseTwoA">
-                                                Utility Details
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwoA" class="accordion-collapse collapse" data-bs-parent="#accordionTwo">
-                                            <div class="accordion-body">
-                                                <div class="feature-list-two">
-                                                    <ul class="style-none d-flex flex-wrap justify-content-between">
-                                                        <li><span>Heating: </span> <span class="fw-500 color-dark">Natural gas </span></li>
-                                                        <li><span>Intercom: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                        <li><span>Air Condition: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                        <li><span>Window Type: </span> <span class="fw-500 color-dark">Aluminum frame </span></li>
-                                                        <li><span>Fireplace: </span> <span class="fw-500 color-dark">--</span></li>
-                                                        <li><span>Cable TV:  </span> <span class="fw-500 color-dark">--</span></li>
-                                                        <li><span>Elevator: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                        <li><span>WiFi: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                        <li><span>Ventilation: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                    </ul>
-                                                </div>
-                                                <!-- /.feature-list-two -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeA" aria-expanded="true" aria-controls="collapseThreeA">
-                                                Outdoor Features
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThreeA" class="accordion-collapse collapse" data-bs-parent="#accordionTwo">
-                                            <div class="accordion-body">
-                                                <div class="feature-list-two">
-                                                    <ul class="style-none d-flex flex-wrap justify-content-between">
-                                                        <li><span>Garage: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                        <li><span>Parking: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                        <li><span>Garden: </span> <span class="fw-500 color-dark">30m2</span></li>
-                                                        <li><span>Disabled Access: </span> <span class="fw-500 color-dark">Ramp</span></li>
-                                                        <li><span>Swimming Pool: </span> <span class="fw-500 color-dark">--</span></li>
-                                                        <li><span>Fence: </span> <span class="fw-500 color-dark">--</span></li>
-                                                        <li><span>Security: </span> <span class="fw-500 color-dark">3 Cameras</span></li>
-                                                        <li><span>Pet Friendly: </span> <span class="fw-500 color-dark">Yes</span></li>
-                                                    </ul>
-                                                </div>
-                                                <!-- /.feature-list-two -->
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -265,63 +187,13 @@
                                     <li>{{ $amenity }}</li>  
                                     
                                 @endforeach
-                                {{-- <li>Garages</li>
-                                <li>Swimming Pool</li>
-                                <li>Parking</li>
-                                <li>Garden</li>
-                                <li>Disabled Access</li>
-                                <li>Pet Friendly</li>
-                                <li>Ceiling Height</li>
-                                <li>Refrigerator</li>
-                                <li>Fireplace</li>
-                                <li>Elevator</li>
-                                <li>Wifi</li> --}}
                             </ul>
                             <!-- /.list-style-two -->
                         </div>
                         <!-- /.property-amenities -->
 
-                        {{-- <div class="property-video-tour mb-50">
-                            <h4 class="mb-40">Video Tour</h4>
-                            <div class="bg-white shadow4 border-20 p-15">
-                                <div class="position-relative border-15 image-bg overflow-hidden z-1">
-                                    <img src="images/lazy.svg" data-src="images/listing/img_47.jpg" alt="" class="lazy-img w-100">
-                                    <a class="video-icon tran3s rounded-circle d-flex align-items-center justify-content-center" data-fancybox href="https://www.youtube.com/embed/aXFSJTjVjw0">
-                                        <i class="fa-thin fa-play"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <!-- /.property-video-tour -->
-
-                        {{-- <div class="property-floor-plan mb-50">
-                            <h4 class="mb-40">Floor Plans</h4>
-                            <div class="bg-white shadow4 border-20 p-30">
-                                <div id="floor-plan" class="carousel slide">
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#floor-plan" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#floor-plan" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#floor-plan" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="images/listing/floor_1.jpg" alt="" class="w-100">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="images/listing/floor_2.jpg" alt="" class="w-100">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="images/listing/floor_1.jpg" alt="" class="w-100">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <!-- /.property-floor-plan -->
-
                         <div class="property-nearby bg-white shadow4 border-20 p-40 mb-50">
                             <h4 class="mb-20">What’s Nearby</h4>
-                            {{-- <p class="fs-20 lh-lg pb-30">Risk management and compliance, when approached strategically, have th potential to go beyond mitigating threats.</p> --}}
                             <ul class="style-none d-flex flex-wrap justify-content-between nearby-list-item">
                                 <li>School & Collage: <span class="fw-500 color-dark">0.9km</span></li>
                                 <li>Grocery Center: <span class="fw-500 color-dark">0.2km</span></li>
@@ -339,178 +211,8 @@
                         </div>
                         <!-- /.property-nearby -->
 
-                        {{-- <div class="similar-property">
-                            <h4 class="mb-40">Similar Homes You May Like</h4>
-                            <div class="similar-listing-slider-one">
-                                <div class="item">
-                                    <div class="listing-card-one shadow4 style-three border-30 mb-50">
-                                        <div class="img-gallery p-15">
-                                            <div class="position-relative border-20 overflow-hidden">
-                                                <div class="tag bg-white text-dark fw-500 border-20">FOR RENT</div>
-                                                <img src="images/listing/img_13.jpg" class="w-100 border-20" alt="...">
-                                                <a href="listing_details_06.html" class="btn-four inverse rounded-circle position-absolute"><i class="bi bi-arrow-up-right"></i></a>
-                                                <div class="img-slider-btn">
-                                                    03 <i class="fa-regular fa-image"></i>
-                                                    <a href="images/listing/img_large_01.jpg" class="d-block" data-fancybox="img1" data-caption="Blueberry villa"></a>
-                                                    <a href="images/listing/img_large_02.jpg" class="d-block" data-fancybox="img1" data-caption="Blueberry villa"></a>
-                                                    <a href="images/listing/img_large_03.jpg" class="d-block" data-fancybox="img1" data-caption="Blueberry villa"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.img-gallery -->
-                                        <div class="property-info pe-4 ps-4">
-                                            <a href="listing_details_06.html" class="title tran3s">Blueberry villa.</a>
-                                            <div class="address m0 pb-5">Mirpur 10, Stadium dhaka</div>
-                                            <div class="pl-footer m0 d-flex align-items-center justify-content-between">
-                                                <strong class="price fw-500 color-dark">$34,900</strong>
-                                                <ul class="style-none d-flex action-icons">
-                                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-bookmark"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-circle-plus"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- /.property-info -->
-                                    </div>
-                                    <!-- /.listing-card-one -->
-                                </div>
-                                <div class="item">
-                                    <div class="listing-card-one shadow4 style-three border-30 mb-50">
-                                        <div class="img-gallery p-15">
-                                            <div class="position-relative border-20 overflow-hidden">
-                                                <div class="tag bg-white text-dark fw-500 border-20">FOR SELL</div>
-                                                <img src="images/listing/img_14.jpg" class="w-100 border-20" alt="...">
-                                                <a href="listing_details_06.html" class="btn-four inverse rounded-circle position-absolute"><i class="bi bi-arrow-up-right"></i></a>
-                                                <div class="img-slider-btn">
-                                                    03 <i class="fa-regular fa-image"></i>
-                                                    <a href="images/listing/img_large_04.jpg" class="d-block" data-fancybox="img2" data-caption="White House villa"></a>
-                                                    <a href="images/listing/img_large_05.jpg" class="d-block" data-fancybox="img2" data-caption="White House villa"></a>
-                                                    <a href="images/listing/img_large_06.jpg" class="d-block" data-fancybox="img2" data-caption="White House villa"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.img-gallery -->
-                                        <div class="property-info pe-4 ps-4">
-                                            <a href="listing_details_06.html" class="title tran3s">Blueberry villa.</a>
-                                            <div class="address m0 pb-5">California link road, ca, usa</div>
-                                            <div class="pl-footer m0 d-flex align-items-center justify-content-between">
-                                                <strong class="price fw-500 color-dark">$28,100</strong>
-                                                <ul class="style-none d-flex action-icons">
-                                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-bookmark"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-circle-plus"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- /.property-info -->
-                                    </div>
-                                    <!-- /.listing-card-one -->
-                                </div>
-                                <div class="item">
-                                    <div class="listing-card-one shadow4 style-three border-30 mb-50">
-                                        <div class="img-gallery p-15">
-                                            <div class="position-relative border-20 overflow-hidden">
-                                                <div class="tag bg-white text-dark fw-500 border-20">FOR SELL</div>
-                                                <img src="images/listing/img_15.jpg" class="w-100 border-20" alt="...">
-                                                <a href="listing_details_06.html" class="btn-four inverse rounded-circle position-absolute"><i class="bi bi-arrow-up-right"></i></a>
-                                                <div class="img-slider-btn">
-                                                    04 <i class="fa-regular fa-image"></i>
-                                                    <a href="images/listing/img_large_01.jpg" class="d-block" data-fancybox="img3" data-caption="Luxury villa in Dal lake."></a>
-                                                    <a href="images/listing/img_large_05.jpg" class="d-block" data-fancybox="img3" data-caption="Luxury villa in Dal lake."></a>
-                                                    <a href="images/listing/img_large_03.jpg" class="d-block" data-fancybox="img3" data-caption="Luxury villa in Dal lake."></a>
-                                                    <a href="images/listing/img_large_02.jpg" class="d-block" data-fancybox="img3" data-caption="Luxury villa in Dal lake."></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.img-gallery -->
-                                        <div class="property-info pe-4 ps-4">
-                                            <a href="listing_details_06.html" class="title tran3s">Blueberry villa.</a>
-                                            <div class="address m0 pb-5">Mirpur 10, Stadium</div>
-                                            <div class="pl-footer m0 d-flex align-items-center justify-content-between">
-                                                <strong class="price fw-500 color-dark">$42,500</strong>
-                                                <ul class="style-none d-flex action-icons">
-                                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-bookmark"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-circle-plus"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- /.property-info -->
-                                    </div>
-                                    <!-- /.listing-card-one -->
-                                </div>
-                                <div class="item">
-                                    <div class="listing-card-one shadow4 style-three border-30 mb-50">
-                                        <div class="img-gallery p-15">
-                                            <div class="position-relative border-20 overflow-hidden">
-                                                <div class="tag bg-white text-dark fw-500 border-20">FOR SELL</div>
-                                                <img src="images/listing/img_16.jpg" class="w-100 border-20" alt="...">
-                                                <a href="listing_details_06.html" class="btn-four inverse rounded-circle position-absolute"><i class="bi bi-arrow-up-right"></i></a>
-                                                <div class="img-slider-btn">
-                                                    04 <i class="fa-regular fa-image"></i>
-                                                    <a href="images/listing/img_large_04.jpg" class="d-block" data-fancybox="img4" data-caption="South Sun House"></a>
-                                                    <a href="images/listing/img_large_06.jpg" class="d-block" data-fancybox="img4" data-caption="South Sun House"></a>
-                                                    <a href="images/listing/img_large_03.jpg" class="d-block" data-fancybox="img4" data-caption="South Sun House"></a>
-                                                    <a href="images/listing/img_large_02.jpg" class="d-block" data-fancybox="img4" data-caption="South Sun House"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.img-gallery -->
-                                        <div class="property-info pe-4 ps-4">
-                                            <a href="listing_details_06.html" class="title tran3s">South Sun House</a>
-                                            <div class="address m0 pb-5">Mirpur 10, Stadium</div>
-                                            <div class="pl-footer m0 d-flex align-items-center justify-content-between">
-                                                <strong class="price fw-500 color-dark">$55,500</strong>
-                                                <ul class="style-none d-flex action-icons">
-                                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-bookmark"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-circle-plus"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- /.property-info -->
-                                    </div>
-                                    <!-- /.listing-card-one -->
-                                </div>
-                                <div class="item">
-                                    <div class="listing-card-one shadow4 style-three border-30 mb-50">
-                                        <div class="img-gallery p-15">
-                                            <div class="position-relative border-20 overflow-hidden">
-                                                <div class="tag bg-white text-dark fw-500 border-20">FOR SELL</div>
-                                                <img src="images/listing/img_14.jpg" class="w-100 border-20" alt="...">
-                                                <a href="listing_details_06.html" class="btn-four inverse rounded-circle position-absolute"><i class="bi bi-arrow-up-right"></i></a>
-                                                <div class="img-slider-btn">
-                                                    03 <i class="fa-regular fa-image"></i>
-                                                    <a href="images/listing/img_large_04.jpg" class="d-block" data-fancybox="img5" data-caption="White House villa"></a>
-                                                    <a href="images/listing/img_large_05.jpg" class="d-block" data-fancybox="img5" data-caption="White House villa"></a>
-                                                    <a href="images/listing/img_large_06.jpg" class="d-block" data-fancybox="img5" data-caption="White House villa"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.img-gallery -->
-                                        <div class="property-info pe-4 ps-4">
-                                            <a href="listing_details_06.html" class="title tran3s">White House villa</a>
-                                            <div class="address m0 pb-5">California link road, ca, usa</div>
-                                            <div class="pl-footer m0 d-flex align-items-center justify-content-between">
-                                                <strong class="price fw-500 color-dark">$28,100</strong>
-                                                <ul class="style-none d-flex action-icons">
-                                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-bookmark"></i></a></li>
-                                                    <li><a href="#"><i class="fa-light fa-circle-plus"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- /.property-info -->
-                                    </div>
-                                    <!-- /.listing-card-one -->
-                                </div>
-                            </div>
-                        </div> --}}
-                        <!-- /.similar-property -->
-
                         <div class="property-score bg-white shadow4 border-20 p-40 mb-50">
                             <h4 class="mb-20">Walk Score</h4>
-                            {{-- <p class="fs-20 lh-lg pb-30">Risk management and compliance, when approached strategically, have the potential</p> --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="block d-flex align-items-center mb-50 sm-mb-30">
@@ -563,165 +265,6 @@
                             </div>
                         </div>
                         <!-- /.property-location -->
-
-                        {{-- <div class="review-panel-one bg-white shadow4 border-20 p-40 mb-50">
-                            <div class="position-relative z-1">
-                                <div class="d-sm-flex justify-content-between align-items-center mb-10">
-                                    <h4 class="m0 xs-pb-30">Reviews</h4>
-                                    <select class="nice-select">
-                                        <option value="0">Newest</option>
-                                        <option value="1">Best Seller</option>
-                                        <option value="2">Best Match</option>
-                                    </select>
-                                </div>
-                                <div class="review-wrapper mb-35">
-                                    <div class="review">
-                                        <img src="images/media/img_01.jpg" alt="" class="rounded-circle avatar">
-                                        <div class="text">
-                                            <div class="d-sm-flex justify-content-between">
-                                                <div>
-                                                    <h6 class="name">Zubayer Al Hasan</h6>
-                                                    <div class="time fs-16">17 Aug, 23</div>
-                                                </div>
-                                                <ul class="rating style-none d-flex xs-mt-10">
-                                                    <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
-                                            <div class="d-flex review-help-btn">
-                                                <a href="#" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
-                                                <a href="#"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
-                                            </div>
-                                        </div>
-                                        <!-- /.text -->
-                                    </div>
-                                    <!-- /.review -->
-
-                                    <div class="review">
-                                        <img src="images/media/img_03.jpg" alt="" class="rounded-circle avatar">
-                                        <div class="text">
-                                            <div class="d-sm-flex justify-content-between">
-                                                <div>
-                                                    <h6 class="name">Rashed Kabir</h6>
-                                                    <div class="time fs-16">13 Jun, 23</div>
-                                                </div>
-                                                <ul class="rating style-none d-flex xs-mt-10">
-                                                    <li><span class="fst-italic me-2">(4.9 Rating)</span> </li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
-                                            <ul class="style-none d-flex flex-wrap review-gallery pb-30">
-                                                <li><a href="images/listing/img_large_01.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa"><img src="images/listing/img_48.jpg" alt=""></a></li>
-                                                <li><a href="images/listing/img_large_02.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa"><img src="images/listing/img_49.jpg" alt=""></a></li>
-                                                <li><a href="images/listing/img_large_03.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa"><img src="images/listing/img_50.jpg" alt=""></a></li>
-                                                <li>
-                                                    <div class="position-relative more-img">
-                                                        <img src="images/listing/img_50.jpg" alt="">
-                                                        <span>13+</span>
-                                                        <a href="images/listing/img_large_04.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa."></a>
-                                                        <a href="images/listing/img_large_05.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa."></a>
-                                                        <a href="images/listing/img_large_06.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa."></a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="d-flex review-help-btn">
-                                                <a href="#" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
-                                                <a href="#"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
-                                            </div>
-                                            
-                                        </div>
-                                        <!-- /.text -->
-                                    </div>
-                                    <!-- /.review -->
-
-                                    <div class="review hide">
-                                        <img src="images/media/img_02.jpg" alt="" class="rounded-circle avatar">
-                                        <div class="text">
-                                            <div class="d-sm-flex justify-content-between">
-                                                <div>
-                                                    <h6 class="name">Perty Jinta</h6>
-                                                    <div class="time fs-16">17 Aug, 23</div>
-                                                </div>
-                                                <ul class="rating style-none d-flex xs-mt-10">
-                                                    <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
-                                            <div class="d-flex review-help-btn">
-                                                <a href="#" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
-                                                <a href="#"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
-                                            </div>
-                                        </div>
-                                        <!-- /.text -->
-                                    </div>
-                                    <!-- /.review -->
-                                </div>
-                                <!-- /.review-wrapper -->
-                                <div class="load-more-review text-uppercase w-100 border-15 tran3s">VIEW ALL 120 REVIEWS <i class="bi bi-arrow-up-right"></i></div>
-                            </div>						
-                        </div> --}}
-                        <!-- /.review-panel-one -->
-
-                        {{-- <div class="review-form bg-white shadow4 border-20 p-40">
-                            <h4 class="mb-20">Leave A Reply</h4>
-                            <p class="fs-20 lh-lg pb-15"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="color-dark fw-500 text-decoration-underline">Sign in</a> to post your comment or signup if you don't have any account.</p>
-                            
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-box-two mb-30">
-                                            <div class="label">Title*</div>
-                                            <input type="text" placeholder="Rashed Kabir" class="type-input">
-                                        </div>
-                                        <!-- /.input-box-two -->
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="input-box-two mb-30">
-                                            <div class="label">Email*</div>
-                                            <input type="email" placeholder="rshdkabir@gmail.com" class="type-input">
-                                        </div>
-                                        <!-- /.input-box-two -->
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="input-box-two mb-30">
-                                            <div class="label">Ratings*</div>
-                                            <select class="nice-select">
-                                                <option value="0">Ratings</option>
-                                                <option value="1">Five Star</option>
-                                                <option value="1">Four Star</option>
-                                                <option value="1">Three Star</option>
-                                                <option value="1">Two Star</option>
-                                                <option value="1">One Star</option>
-                                            </select>
-                                        </div>
-                                        <!-- /.input-box-two -->
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="input-box-two mb-30">
-                                            <textarea placeholder="Write your review here..."></textarea>
-                                        </div>
-                                        <!-- /.input-box-two -->
-                                    </div>
-                                </div>
-                                <button class="btn-five text-uppercase sm">Post Review</button>
-                            </form>
-                        </div> --}}
-                        <!-- /.review-form -->
                     </div>
 
                     <div class="col-xl-4 col-lg-8 me-auto ms-auto">
@@ -731,18 +274,9 @@
                                 <div class="text-center mt-25">
                                     <h6 class="name"> {{ $property->landlord->name }} </h6>
                                     <p class="fs-16">Property Agent & Broker</p>
-                                    {{-- <ul class="style-none d-flex align-items-center justify-content-center social-icon">
-                                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-                                    </ul> --}}
                                 </div>
                                 <div class="divider-line mt-40 mb-45 pt-20">
                                     <ul class="style-none">
-                                        {{-- <li>Location: 
-                                            <span>{{ $property->landlord->location->area->name }}, {{ $property->landlord->location->city->name }}</span>
-                                        </li> --}}
                                         <li>Email: <span><a href="mailto:{{ $property->landlord->email }}"> {{ $property->landlord->email }} </a></span></li>
                                         <li>Phone: <span><a href="tel:{{ $property->landlord->phone }}"> {{ $property->landlord->phone }} </a></span></li>
                                     </ul>
@@ -753,163 +287,6 @@
                                 <a href="{{ $property->list_in == "rent" ? route("public.contract.rent.create", ["property_id" => $property->id]) : route("public.contract.sell.create", ["property_id" => $property->id]) }}" class="btn-nine text-uppercase rounded-3 w-100 mb-10">{{ $property->list_in == "rent" ? "Rent" : "Sell" }} this Property</a>
                             </div>
                             <!-- /.agent-info -->
-
-                            {{-- <div class="tour-schedule bg-white border-20 p-30 mb-40">
-                                <h5 class="mb-40">Schedule Tour</h5>
-                                <form action="#">
-                                    <div class="input-box-three mb-25">
-                                        <div class="label">Your Name*</div>
-                                        <input type="text" placeholder="Your full name" class="type-input">
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <div class="input-box-three mb-25">
-                                        <div class="label">Your Email*</div>
-                                        <input type="email" placeholder="Enter mail address" class="type-input">
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <div class="input-box-three mb-25">
-                                        <div class="label">Your Phone*</div>
-                                        <input type="tel" placeholder="Your phone number" class="type-input">
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <div class="input-box-three mb-15">
-                                        <div class="label">Message*</div>
-                                        <textarea placeholder="Hello, I am interested in [Califronia Apartments]"></textarea>
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <button class="btn-nine text-uppercase rounded-3 w-100 mb-10">INQUIry</button>
-                                </form>
-                            </div> --}}
-                            <!-- /.tour-schedule -->
-
-                            {{-- <div class="mortgage-calculator bg-white border-20 p-30 mb-40">
-                                <h5 class="mb-40">Mortgage Calculator</h5>
-                                <form action="#">
-                                    <div class="input-box-three mb-25">
-                                        <div class="label">Home Price*</div>
-                                        <input type="tel" placeholder="1,32,789" class="type-input">
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <div class="input-box-three mb-25">
-                                        <div class="label">Down Payment*</div>
-                                        <input type="tel" placeholder="$" class="type-input">
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <div class="input-box-three mb-25">
-                                        <div class="label">Interest Rate*</div>
-                                        <input type="tel" placeholder="3.5%" class="type-input">
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <div class="input-box-three mb-25">
-                                        <div class="label">Loan Terms (Years)</div>
-                                        <input type="tel" placeholder="24" class="type-input">
-                                    </div>
-                                    <!-- /.input-box-three -->
-                                    <button class="btn-five text-uppercase sm rounded-3 w-100 mb-10">CALCULATE</button>
-                                </form>
-                            </div> --}}
-                            <!-- /.mortgage-calculator -->
-
-                            {{-- <div class="feature-listing bg-white border-20 p-30">
-                                <h5 class="mb-40">Featured Listing</h5>
-                                <div id="F-listing" class="carousel slide">
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#F-listing" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#F-listing" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#F-listing" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <div class="listing-card-one style-three border-10">
-                                                <div class="img-gallery">
-                                                    <div class="position-relative border-10 overflow-hidden">
-                                                        <div class="tag bg-white text-dark fw-500 border-20">FOR RENT</div>
-                                                        <a href="#" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
-                                                        <img src="images/listing/img_13.jpg" class="w-100 border-10" alt="...">
-                                                        <div class="img-slider-btn">
-                                                            03 <i class="fa-regular fa-image"></i>
-                                                            <a href="images/listing/img_large_01.jpg" class="d-block" data-fancybox="imgA" data-caption="Blueberry villa"></a>
-                                                            <a href="images/listing/img_large_02.jpg" class="d-block" data-fancybox="imgA" data-caption="Blueberry villa"></a>
-                                                            <a href="images/listing/img_large_03.jpg" class="d-block" data-fancybox="imgA" data-caption="Blueberry villa"></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.img-gallery -->
-                                                <div class="property-info mt-15">
-                                                    <div class="d-flex justify-content-between align-items-end">
-                                                        <div>
-                                                            <strong class="price fw-500 color-dark">$1,23,710</strong>
-                                                            <div class="address m0 pt-5">120 Elgin St. Celina, Delaware </div>
-                                                        </div>
-                                                        <a href="listing_details_03.html" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
-                                                    </div>
-                                                </div>
-                                                <!-- /.property-info -->
-                                            </div>
-                                            <!-- /.listing-card-one -->
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="listing-card-one style-three border-10">
-                                                <div class="img-gallery">
-                                                    <div class="position-relative border-10 overflow-hidden">
-                                                        <div class="tag bg-white text-dark fw-500 border-20">FOR RENT</div>
-                                                        <a href="#" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
-                                                        <img src="images/listing/img_14.jpg" class="w-100 border-10" alt="...">
-                                                        <div class="img-slider-btn">
-                                                            03 <i class="fa-regular fa-image"></i>
-                                                            <a href="images/listing/img_large_04.jpg" class="d-block" data-fancybox="imgB" data-caption="Blueberry villa"></a>
-                                                            <a href="images/listing/img_large_05.jpg" class="d-block" data-fancybox="imgB" data-caption="Blueberry villa"></a>
-                                                            <a href="images/listing/img_large_06.jpg" class="d-block" data-fancybox="imgB" data-caption="Blueberry villa"></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.img-gallery -->
-                                                <div class="property-info mt-15">
-                                                    <div class="d-flex justify-content-between align-items-end">
-                                                        <div>
-                                                            <strong class="price fw-500 color-dark">$2,11,536</strong>
-                                                            <div class="address m0 pt-5">120 Elgin St. Celina, Delaware </div>
-                                                        </div>
-                                                        <a href="listing_details_03.html" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
-                                                    </div>
-                                                </div>
-                                                <!-- /.property-info -->
-                                            </div>
-                                            <!-- /.listing-card-one -->
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="listing-card-one style-three border-10">
-                                                <div class="img-gallery">
-                                                    <div class="position-relative border-10 overflow-hidden">
-                                                        <div class="tag bg-white text-dark fw-500 border-20">FOR RENT</div>
-                                                        <a href="#" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
-                                                        <img src="images/listing/img_15.jpg" class="w-100 border-10" alt="...">
-                                                        <div class="img-slider-btn">
-                                                            03 <i class="fa-regular fa-image"></i>
-                                                            <a href="images/listing/img_large_04.jpg" class="d-block" data-fancybox="imgC" data-caption="Blueberry villa"></a>
-                                                            <a href="images/listing/img_large_05.jpg" class="d-block" data-fancybox="imgC" data-caption="Blueberry villa"></a>
-                                                            <a href="images/listing/img_large_06.jpg" class="d-block" data-fancybox="imgC" data-caption="Blueberry villa"></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.img-gallery -->
-                                                <div class="property-info mt-15">
-                                                    <div class="d-flex justify-content-between align-items-end">
-                                                        <div>
-                                                            <strong class="price fw-500 color-dark">$3,05,958</strong>
-                                                            <div class="address m0 pt-5">120 Elgin St. Celina, Delaware </div>
-                                                        </div>
-                                                        <a href="listing_details_03.html" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
-                                                    </div>
-                                                </div>
-                                                <!-- /.property-info -->
-                                            </div>
-                                            <!-- /.listing-card-one -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <!-- /.feature-listing -->
                         </div>
                         <!-- /.theme-sidebar-one -->
                     </div>
@@ -955,25 +332,6 @@
 
     <script>
         
-
-        // async function genPdf() {
-        //     var doc = new jsPDF('l', 'pt', 'a4');
-
-        //     const element = document.getElementById("printable");
-
-        //     await html2canvas(element, {
-        //         allowTaint: true,
-        //         useCORS: true,
-        //         width: 530
-        //     }).then((canvas) => {
-        //         //Canvas (convert to PNG)
-        //         doc.addImage(canvas.toDataURL("image/png"), 'PNG', 5, 5, 500, 200);
-        //     })
-
-        //     doc.save("Document.pdf");
-            
-        // }
-        
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
@@ -991,14 +349,10 @@
                 const downloadButton = document.getElementById("downloadButton");
             
                 downloadButton.addEventListener("click", function () {
-                    // const element = document.getElementById("printable"); // Replace "body" with the ID of the HTML element you want to convert
                     html2canvas(document.querySelector('#printable')).then((canvas) => {
                         let base64image = canvas.toDataURL('image/png');
-                        // console.log(base64image);
-                        let pdf = new jsPDF('p', 'px', [4268.62, 1675]); //3508 x 2480px
+                        let pdf = new jsPDF('p', 'px', [4268.62, 1675]); 
                         pdf.addImage(base64image, 'PNG', 15, 15, 1675, 4268.62);
-                        // 4268.62px
-                        // 1675px
                         pdf.save("{{$property->title}}");
                     });
                     

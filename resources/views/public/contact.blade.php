@@ -98,8 +98,6 @@
                 <div class="col-xl-5 col-lg-6 d-flex order-lg-first">
                     <div class="contact-map-banner w-100">
                         <div class="gmap_canvas h-100 w-100">
-                            {{-- <iframe class="gmap_iframe h-100 w-100" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=united%20kingdom&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> --}}
-                            {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d21942807.534379628!2d-4.473772!3d54.55128!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited%20Kingdom!5e1!3m2!1sen!2sus!4v1709734227983!5m2!1sen!2sus" width="400" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d21942807.534379628!2d-4.473772!3d54.55128!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited%20Kingdom!5e1!3m2!1sen!2sus!4v1709734227983!5m2!1sen!2sus" width="683" height="772" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>

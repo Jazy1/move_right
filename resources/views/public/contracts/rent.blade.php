@@ -272,14 +272,10 @@
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        {{-- <td id="style-dJoGC" class="style-dJoGC">
-                                            <p id="style-veXgj" class="style-veXgj">_______________________<br>Witness:<br>_______________________<br>Address </p>
-                                        </td> --}}
                                         <td id="style-P1ekL" class="style-P1ekL">
                                             <p id="style-cdMrY" class="style-cdMrY">
                                                 <div class="file-container">
                                                     <label for="landlord_signature" class="file-label">Landlord Signature</label>
-                                                    {{-- <input type="file" name="landlord_signature" id="landlord_signature" class="file-input" required> --}}
                                                     <img src="{{ Storage::url($contract->landlord_signature) }}" alt="Landlord Signature Preview" class="file-preview" id="landlordSignaturePreview">
                                                 </div>
                                                 <br> {{ $contract->landlord->name }}</p>
@@ -294,14 +290,10 @@
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        {{-- <td id="style-OFS9n" class="style-OFS9n">
-                                            <p id="style-RgOZA" class="style-RgOZA">_______________________<br>Witness:<br>_______________________<br>Address </p>
-                                        </td> --}}
                                         <td id="style-nE4lK" class="style-nE4lK">
                                             <p id="style-iw8Q8" class="style-iw8Q8">
                                                 <div class="file-container">
                                                     <label for="buyer_signature" class="file-label">Buyer Signature</label>
-                                                    {{-- <input type="file" name="buyer_signature" id="buyer_signature" class="file-input" required> --}}
                                                     <img src="{{ Storage::url($contract->buyer_signature) }}" alt="Buyer Signature Preview" class="file-preview" id="buyerSignaturePreview">
                                                 </div>
 
@@ -311,26 +303,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            {{-- <p id="style-WrOgI" class="style-WrOgI">The Tenant acknowledges receiving a duplicate copy of this Agreement signed by the Tenant and the Landlord on the _____ day of ____________, 20____. </p> --}}
-                            {{-- <table id="style-g74MC" class="style-g74MC">
-                                <colgroup>
-                                    <col id="style-StFH4" class="style-StFH4">
-                                    <col id="style-o96aH" class="style-o96aH">
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <td id="style-G3es1" class="style-G3es1">
-                                            <p id="style-gk8QE" class="style-gk8QE">_______________________<br>Sodaybaz </p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table> --}}
                         </div>
                     </div>
-                    {{-- <center>
-                        <button class="big-blue-button">Submit</button>
-
-                    </center> --}}
                     <div class=" header">
                         <span class="content">Tenancy Agreement</span>
                         <span class="pageNumbers">Page <span class="currentPageNum"></span> of <span class="totalPageNum"></span></span>
@@ -348,7 +322,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Landlord Signature
             $('#landlord_signature').on('change', function() {
                 var input = this;
                 if (input.files && input.files[0]) {
@@ -360,7 +333,6 @@
                 }
             });
 
-            // Buyer Signature
             $('#buyer_signature').on('change', function() {
                 var input = this;
                 if (input.files && input.files[0]) {

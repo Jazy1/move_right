@@ -12,24 +12,12 @@
                     <img src=" {{ asset("dashboard/images/icon/icon_1.svg") }} " alt="">
                     <span>Dashboard</span>
                 </a></li>
-                {{-- <li class="plr"><a href="message.html" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_2.svg") }} " alt="">
-                    <span>Message</span>
-                </a></li> --}}
                 <li class="bottom-line pt-30 lg-pt-20 mb-40 lg-mb-30"></li>
                 <li><div class="nav-title">Profile</div></li>
                 <li class="plr"><a href="{{ route("landlords.profile", $landlord->id) }}" class="d-flex w-100 align-items-center">
                     <img src=" {{ asset("dashboard/images/icon/icon_3.svg") }} " alt="">
                     <span>Profile</span>
                 </a></li>
-                {{-- <li class="plr"><a href="account-settings.html" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_4.svg") }} " alt="">
-                    <span>Account Settings</span>
-                </a></li> --}}
-                {{-- <li class="plr"><a href="membership.html" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_5.svg") }} " alt="">
-                    <span>Membership</span>
-                </a></li> --}}
                 <li class="bottom-line pt-30 lg-pt-20 mb-40 lg-mb-30"></li>
                 <li><div class="nav-title">Listing</div></li>
                 <li class="plr"><a href="{{ route("landlords.properties") }}" class="d-flex w-100 align-items-center">
@@ -47,33 +35,14 @@
                     <img src=" {{ asset("dashboard/images/icon/icon_6.svg") }} " alt="">
                     <span>My Contracts</span>
                 </a></li>
-                {{-- <li class="plr"><a href="{{ route("landlords.properties.create") }}" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_7.svg") }} " alt="">
-                    <span>Add New Property</span>
-                </a></li> --}}
-                {{-- <li class="plr"><a href="favourites.html" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_8.svg") }} " alt="">
-                    <span>Favourites</span>
+                <li class="bottom-line pt-30 lg-pt-20 mb-40 lg-mb-30"></li>
+                <li><div class="nav-title">Inspection Reports</div></li>
+                <li class="plr"><a href="{{ route("landlords.inspections") }}" class="d-flex w-100 align-items-center">
+                    <img src=" {{ asset("dashboard/images/icon/icon_6.svg") }} " alt="">
+                    <span>Inspection Reports</span>
                 </a></li>
-                <li class="plr"><a href="saved-search.html" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_9.svg") }} " alt="">
-                    <span>Saved Search</span>
-                </a></li>
-                <li class="plr"><a href="review.html" class="d-flex w-100 align-items-center">
-                    <img src=" {{ asset("dashboard/images/icon/icon_10.svg") }} " alt="">
-                    <span>Reviews</span>
-                </a></li> --}}
             </ul>
         </nav>
-        <!-- /.dasboard-main-nav -->
-        {{-- <div class="profile-complete-status bottom-line pb-35 plr">
-            <div class="progress-value fw-500">82%</div>
-            <div class="progress-line position-relative">
-                <div class="inner-line" style="width:80%;"></div>
-            </div>
-            <p>Profile Complete</p>
-        </div> --}}
-        <!-- /.profile-complete-status -->
 
         <div class="profile-complete-status  pb-35 plr">
             <a href="{{ route("landlords.logout") }}" class="d-flex w-100 align-items-center logout-btn">

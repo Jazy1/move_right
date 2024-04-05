@@ -118,6 +118,19 @@ Entities so far
 			valid
 			nullNvoid
 
+	Inspection
+		id
+		created_at
+		updated_at
+		landlord_id
+		buyer_id
+		property_id
+		from
+			buyer
+			landlord
+		items
+		comments
+		
 
 Todo
 	Signup landlord (done)
@@ -168,3 +181,46 @@ Todo
 		Acc setting
 
 	favourites
+	
+	Inspection report shit
+
+From notepad
+
+	Property shit (done)
+		Buyer flow. Contract > Upload signatures, to and from date, 	Populate Auto fetch property and buyer info (done)
+		Db design (Done)
+		Git push (done)
+
+		Ui design (done)
+		Arch design (done)
+		Report shit
+		There will be 2 sections to report.
+		Property section:
+			Property details along with pictures, address, amenities such ass wifi, swimming pool etc offered by this property.
+		Property details include bedrooms, bathrooms, garages, kitchens, gardens, the type of property like villa, condo or house. It aslo include price and monthly rent depending.
+
+		Landlord section:
+			Complete detail about landlord will be provided to build trust. His address, other properties, his contacts and socials as well.
+
+
+	Property Proj
+
+	Buyer flow (done) >.>
+		rent (done)
+		sell 
+	Buyer dashboard (done)
+	Report shit as pdf (done)
+	Corresponding changes in landylord dashboard (done)
+	Profile Page (done)
+	Settings page
+	Increase in register information
+	polish (KINDA)
+		Notification system
+		sort out landing dashboard pages
+	Good Dummy data
+	Record good vid
+	Upload vid
+	Setup stuff
+
+
+Revisions

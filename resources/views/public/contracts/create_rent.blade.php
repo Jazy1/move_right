@@ -278,9 +278,6 @@
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        {{-- <td id="style-dJoGC" class="style-dJoGC">
-                                            <p id="style-veXgj" class="style-veXgj">_______________________<br>Witness:<br>_______________________<br>Address </p>
-                                        </td> --}}
                                         <td id="style-P1ekL" class="style-P1ekL">
                                             <p id="style-cdMrY" class="style-cdMrY">
                                                 <div class="file-container">
@@ -300,9 +297,6 @@
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        {{-- <td id="style-OFS9n" class="style-OFS9n">
-                                            <p id="style-RgOZA" class="style-RgOZA">_______________________<br>Witness:<br>_______________________<br>Address </p>
-                                        </td> --}}
                                         <td id="style-nE4lK" class="style-nE4lK">
                                             <p id="style-iw8Q8" class="style-iw8Q8">
                                                 <div class="file-container">
@@ -317,20 +311,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            {{-- <p id="style-WrOgI" class="style-WrOgI">The Tenant acknowledges receiving a duplicate copy of this Agreement signed by the Tenant and the Landlord on the _____ day of ____________, 20____. </p> --}}
-                            {{-- <table id="style-g74MC" class="style-g74MC">
-                                <colgroup>
-                                    <col id="style-StFH4" class="style-StFH4">
-                                    <col id="style-o96aH" class="style-o96aH">
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <td id="style-G3es1" class="style-G3es1">
-                                            <p id="style-gk8QE" class="style-gk8QE">_______________________<br>Sodaybaz </p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table> --}}
                         </div>
                     </div>
                     <center>
@@ -354,7 +334,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Landlord Signature
             $('#landlord_signature').on('change', function() {
                 var input = this;
                 if (input.files && input.files[0]) {
@@ -365,8 +344,6 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             });
-
-            // Buyer Signature
             $('#buyer_signature').on('change', function() {
                 var input = this;
                 if (input.files && input.files[0]) {

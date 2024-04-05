@@ -1,6 +1,6 @@
-@extends('landlords.layouts.parent')
+@extends('buyers.layouts.parent')
 
-@section('title', "Contracts | Move Right®")
+@section('title', "Inspection Reports | Move Right®")
 
 @section('content')
     
@@ -10,7 +10,7 @@
     <div class="dashboard-body">
         <div class="position-relative">
             <!-- ************************ Header **************************** -->
-            <x-landlords.header :landlord="$landlord" />
+            <x-buyers.header :buyer="$buyer" />
             <!-- End Header -->
 
             <h2 class="main-title d-block d-lg-none">My Contracts</h2>
@@ -39,21 +39,19 @@
                         <thead>
                             <tr>
                                 <th scope="col">Property</th>
-                                <th scope="col">Buyer</th>
+                                <th scope="col">Landlord</th>
                                 <th scope="col">From</th>
                                 <th scope="col">To</th>
-                                <th scope="col">For</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody class="border-0">
 
-                            @foreach ($contracts as $contract)
+                            @foreach ($inspections as $inspection)
                                 @php
-                                    $property = $contract->property;
-                                    $landlord = $contract->landlord;
-                                    $buyer = $contract->buyer;
+                                    $property = $inspection->property;
+                                    $landlord = $inspection->landlord;
+                                    $buyer = $inspection->buyer;
 
                                 @endphp
                                 <tr>
@@ -69,23 +67,24 @@
                                     </td>
                                     <td style="padding: 0px 0px;">
                                         <div class="d-lg-flex align-items-center position-relative">
+                                            
                                             <div class="ps-lg-4 md-pt-10">
-                                                <a class="property-name tran3s color-dark fw-500 fs-20 stretched-link" > {{ $buyer->name }} </a>
-                                                <div class="address">{{ $buyer->location->area->name }}, {{ $buyer->location->city->name }}, UK</div>
-                                                <div class="address">{{ $buyer->phone }}</div>
+                                                <a class="property-name tran3s color-dark fw-500 fs-20 stretched-link" > {{ $landlord->name }} </a>
+                                                <div class="address">{{ $landlord->location->area->name }}, {{ $landlord->location->city->name }}, UK</div>
+                                                <div class="address">{{ $landlord->phone }}</div>
+                                                
                                             </div>
                                         </div>
                                     </td>
-                                    <td style="padding: 15px 0px;">{{ \Carbon\Carbon::parse($contract->from)->format('d-m-Y') }}</td>
-                                    <td style="padding: 35px 10px;">{{ \Carbon\Carbon::parse($contract->to)->format('d-m-Y') }}</td>
-                                    <td>{{ ucfirst($contract->list_in) }}</td>
                                     <td>
-                                        @php
-                                            $isValid = $contract->status == "valid" ? true : false
-                                        @endphp
+                                        <div class="property-status " >
+                                            {{ $inspection->from == "landlord" ? "Landlord" : "Buyer" }}
+                                        </div>
+                                    </td>
+                                    <td>
                                         
-                                        <div class="property-status {{ !$isValid ? "pending" : "" }} " >
-                                            {{ $isValid ? "Valid" : "Null&Void" }}
+                                        <div class="property-status pending" >
+                                            {{ $inspection->from == "landlord" ? "Buyer" : "Landlord"  }}
                                         </div>
                                     </td>
 
@@ -96,32 +95,20 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
                                             <li>
-                                                <a class="dropdown-item" href="{{ route("public.contract.rent", $contract->id) }}" target="_blank"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_18.svg") }} " alt="" class="lazy-img"> View Contract</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route("landlords.contracts.nullNvoid", $contract->id) }}"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_21.svg") }}" alt="" class="lazy-img"> Null & Void Contract</a>
-                                            </li>
-
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route("landlords.inspections.create", ["property_id" => $property->id, "buyer_id" => $buyer->id]) }}">
-                                                    <img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_19.svg") }}" alt="" class="lazy-img"> 
-                                                    Send Inspection Report
-                                                </a>
-                                            </li>
+                                                <a class=
                                         </ul>
                                     </div>
                                     </td>
                                 </tr>
                                 
                                 @endforeach
-
-                            
                         </tbody>
                     </table>
                     <!-- /.table property-list-table -->
                 </div>                    
             </div>
             <!-- /.card-box -->
+
 
         </div>
     </div>

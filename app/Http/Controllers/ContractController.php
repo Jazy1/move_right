@@ -84,7 +84,6 @@ class ContractController extends Controller
             $contract->save();
         }
 
-        // Update property status
         Property::find($request->input("property_id"))->update([
             "status" => "unavailable",
         ]);
@@ -93,9 +92,6 @@ class ContractController extends Controller
         return "Contract Created successfully";
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id, Request $request){
         $contract = Contract::findOrFail($id);
 
@@ -105,9 +101,6 @@ class ContractController extends Controller
         ]);
     }
 
-    /**
-     * Null&Void the contract
-     */
     public function nullNvoid($id){
         $contract = Contract::findOrFail($id);
         $contract->update(['status' => "nullNvoid"]);
@@ -117,5 +110,16 @@ class ContractController extends Controller
         ]);
 
         return back()->with("success", "Status Updated Successfully");
+    }
+    
+    public function nullNvoidBuyer($id, Request $request){
+        $contract = Contract::findOrFail($id);
+        $contract->update(['status' => "nullNvoid"]);
+
+        Property::find($contract->property->id)->update([
+            "status" => "available",
+        ]);
+
+        return redirect()->route("buyers.inspections.create", ["landlord_id" => $request->landlord_id, "property_id" => $request->property_id])->with("success", "Status Updated Successfully. Submit an inspection report now.");
     }
 }

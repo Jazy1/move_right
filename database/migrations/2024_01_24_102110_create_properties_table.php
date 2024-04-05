@@ -36,7 +36,6 @@ return new class extends Migration
             $table->text('uuid')->nullable();
             $table->json('media')->nullable();
 
-            // Add other columns as needed
         });
     }
 

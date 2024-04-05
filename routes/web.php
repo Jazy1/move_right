@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\InspectionController;
 use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
@@ -19,10 +20,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get("/", [PublicController::class, "home"])->name("public.home");
 
@@ -45,8 +42,6 @@ Route::get("/test", function(){
         "img" => "public/property_media/de192c7e-23bd-4e04-b255-a5736ac761d5/0_jameel.jpg"
     ]);
 });
-
-// Route::resource('landlords', LandlordController::class);
 
 Route::prefix("landlords")->group(function(){
     
@@ -72,6 +67,13 @@ Route::prefix("landlords")->group(function(){
             Route::get("{contract}/nullNvoid", [ContractController::class, "nullNvoid"])->name("landlords.contracts.nullNvoid");
         });
         
+        Route::prefix("inspections")->group(function(){
+            Route::get("/create", [InspectionController::class, "create"])->name("landlords.inspections.create");
+            Route::post("/", [InspectionController::class, "store"])->name("landlords.inspections.store");
+            Route::get("/", [InspectionController::class, "indexLandlord"])->name("landlords.inspections");
+            Route::get("/{inspection}", [InspectionController::class, "show"])->name("landlords.inspections.inspection");
+        });
+        
     });
     Route::get('get-areas-by-city', [LocationController::class, 'getAreasByCity'])->name("landlords.properties.getAreasByCity");
     
@@ -95,8 +97,15 @@ Route::prefix("buyers")->group(function(){
         Route::prefix("contracts")->group(function(){
             Route::get("/", [ContractController::class, "indexBuyer"])->name("buyers.contracts");
             Route::post("/", [ContractController::class, "store"])->name("buyers.contracts.store");
-            Route::get("{contract}/nullNvoid", [ContractController::class, "nullNvoid"])->name("buyers.contracts.nullNvoid");
+            Route::get("{contract}/nullNvoid", [ContractController::class, "nullNvoidBuyer"])->name("buyers.contracts.nullNvoid");
 
+        });
+
+        Route::prefix("inspections")->group(function(){
+            Route::get("/create", [InspectionController::class, "createBuyer"])->name("buyers.inspections.create");
+            Route::post("/", [InspectionController::class, "storeBuyer"])->name("buyers.inspections.store");
+            Route::get("/", [InspectionController::class, "indexBuyer"])->name("buyers.inspections");
+            Route::get("/{inspection}", [InspectionController::class, "showBuyer"])->name("buyers.inspections.inspection");
         });
 
         Route::get("properties", [BuyerController::class, "properties"]);

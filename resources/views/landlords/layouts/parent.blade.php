@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from html.creativegigstf.com/homy/homy/dashboard/properties-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jan 2024 13:02:44 GMT -->
 <head>
 	<meta charset="UTF-8">
 	<meta name="keywords" content="Real estate, Property sale, Property buy">
-	<meta name="description" content="Homy is a beautiful website template designed for Real Estate Agency.">
-    <meta property="og:site_name" content="Homy">
-    <meta property="og:url" content="https://creativegigstf.com/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Move Right®">
 	<meta name='og:image' content='../images/assets/ogg.png'>
@@ -33,12 +28,6 @@
 	<!-- responsive style sheet -->
 	<link rel="stylesheet" type="text/css" href=" {{ asset("/css/responsive.css") }} " media="all">
 
-	<!-- Fix Internet Explorer ______________________________________-->
-	<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="vendor/html5shiv.js"></script>
-			<script src="vendor/respond.js"></script>
-		<![endif]-->
 </head>
 
 <body>
@@ -122,6 +111,4 @@
 	</div> <!-- /.main-page-wrapper -->
 </body>
 
-
-<!-- Mirrored from html.creativegigstf.com/homy/homy/dashboard/properties-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jan 2024 13:02:46 GMT -->
 </html>

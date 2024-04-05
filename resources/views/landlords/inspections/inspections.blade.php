@@ -1,6 +1,6 @@
 @extends('landlords.layouts.parent')
 
-@section('title', "Contracts | Move Right®")
+@section('title', "Inspection Reports | Move Right®")
 
 @section('content')
     
@@ -32,7 +32,7 @@
                     </center> 
                 </div>
             @endif
-
+            
             <div class="bg-white card-box p0 border-20">
                 <div class="table-responsive pt-25 pb-25 pe-4 ps-4">
                     <table class="table property-list-table">
@@ -42,18 +42,16 @@
                                 <th scope="col">Buyer</th>
                                 <th scope="col">From</th>
                                 <th scope="col">To</th>
-                                <th scope="col">For</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody class="border-0">
 
-                            @foreach ($contracts as $contract)
+                            @foreach ($inspections as $inspection)
                                 @php
-                                    $property = $contract->property;
-                                    $landlord = $contract->landlord;
-                                    $buyer = $contract->buyer;
+                                    $property = $inspection->property;
+                                    $landlord = $inspection->landlord;
+                                    $buyer = $inspection->buyer;
 
                                 @endphp
                                 <tr>
@@ -76,16 +74,15 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td style="padding: 15px 0px;">{{ \Carbon\Carbon::parse($contract->from)->format('d-m-Y') }}</td>
-                                    <td style="padding: 35px 10px;">{{ \Carbon\Carbon::parse($contract->to)->format('d-m-Y') }}</td>
-                                    <td>{{ ucfirst($contract->list_in) }}</td>
                                     <td>
-                                        @php
-                                            $isValid = $contract->status == "valid" ? true : false
-                                        @endphp
+                                        <div class="property-status " >
+                                            {{ $inspection->from == "landlord" ? "Landlord" : "Buyer" }}
+                                        </div>
+                                    </td>
+                                    <td>
                                         
-                                        <div class="property-status {{ !$isValid ? "pending" : "" }} " >
-                                            {{ $isValid ? "Valid" : "Null&Void" }}
+                                        <div class="property-status pending" >
+                                            {{ $inspection->from == "landlord" ? "Buyer" : "Landlord"  }}
                                         </div>
                                     </td>
 
@@ -96,17 +93,7 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
                                             <li>
-                                                <a class="dropdown-item" href="{{ route("public.contract.rent", $contract->id) }}" target="_blank"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_18.svg") }} " alt="" class="lazy-img"> View Contract</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route("landlords.contracts.nullNvoid", $contract->id) }}"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_21.svg") }}" alt="" class="lazy-img"> Null & Void Contract</a>
-                                            </li>
-
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route("landlords.inspections.create", ["property_id" => $property->id, "buyer_id" => $buyer->id]) }}">
-                                                    <img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_19.svg") }}" alt="" class="lazy-img"> 
-                                                    Send Inspection Report
-                                                </a>
+                                                <a class="dropdown-item" href="{{ route("landlords.inspections.inspection", $inspection->id) }}" target="_blank"><img src="../images/lazy.svg" data-src="{{ asset("dashboard/images/icon/icon_18.svg") }} " alt="" class="lazy-img"> View Report</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -114,8 +101,6 @@
                                 </tr>
                                 
                                 @endforeach
-
-                            
                         </tbody>
                     </table>
                     <!-- /.table property-list-table -->

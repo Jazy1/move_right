@@ -18,6 +18,24 @@
 			<!-- End Header -->
 
 			<h2 class="main-title d-block d-lg-none">Dashboard</h2>
+			@if (Session::has('success'))
+				<div class="alert alert-success some-space-upNdown" role="alert">
+					<center style="">
+						{{ session("success") }}
+						<br>
+					</center> 
+				</div>
+			@endif
+
+			@if (Session::has('fail'))
+				<div class="alert alert-danger some-space-upNdown" role="alert">
+					<center style="">
+						{{ session("fail") }}
+						<br>
+					</center> 
+				</div>
+			@endif
+
 			<div class="bg-white border-20">
 				<div class="row">
 					<div class="col-lg-3 col-6">

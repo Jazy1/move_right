@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from html.creativegigstf.com/homy/homy/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jan 2024 13:01:45 GMT -->
 <head>
 	<meta charset="UTF-8">
 	<meta name="keywords" content="Real estate, Property sale, Property buy">
-	<meta name="description" content="Homy is a beautiful website template designed for Real Estate Agency.">
-    <meta property="og:site_name" content="Homy">
-    <meta property="og:url" content="https://creativegigstf.com/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Homy-Real Estate HTML5 Template & Dashboard">
 	<meta name='og:image' content='images/assets/ogg.png'>
 	<!-- For IE -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,12 +27,6 @@
 	<!-- responsive style sheet -->
 	<link rel="stylesheet" type="text/css" href=" {{ asset("css/responsive.css") }} " media="all">
 
-	<!-- Fix Internet Explorer ______________________________________-->
-	<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="vendor/html5shiv.js"></script>
-			<script src="vendor/respond.js"></script>
-		<![endif]-->
 </head>
 
 <body>
@@ -297,9 +285,6 @@
 								<div class="tab-pane {{ $buyerTab == "buyerLogin" ? "show active" : " " }}" role="tabpanel" id="fc3">
 									<div class="text-center mb-20">
 										<h2>Welcome Back!</h2>
-										{{-- <p class="fs-20 color-dark">Still don't have an account? 
-                                            <button  data-bs-toggle="tab" data-bs-target="#fc2" role="tab">Sign up</button>
-                                        </p> --}}
 									</div>
 									<form action="{{ route("buyers.login") }} " method="POST">
 										@csrf
@@ -355,7 +340,6 @@
 								<div class="tab-pane {{ $buyerTab == "buyerSignup" ? "show active" : " " }}" role="tabpanel" id="fc4">
 									<div class="text-center mb-20">
 										<h2>Register</h2>
-										{{-- <p class="fs-20 color-dark">Already have an account? <a href="#">Login</a></p> --}}
 									</div>
 									<form action=" {{route("buyers.store")}} " method="POST">
 										@csrf
@@ -431,25 +415,6 @@
 								<!-- /.tab-pane -->
 							</div>
 							
-							{{-- <div class="d-flex align-items-center mt-30 mb-10">
-								<div class="line"></div>
-								<span class="pe-3 ps-3 fs-6">OR</span>
-								<div class="line"></div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<a href="#" class="social-use-btn d-flex align-items-center justify-content-center tran3s w-100 mt-10">
-										<img src="images/icon/google.png" alt="">
-										<span class="ps-3">Signup with Google</span>
-									</a>
-								</div>
-								<div class="col-sm-6">
-									<a href="#" class="social-use-btn d-flex align-items-center justify-content-center tran3s w-100 mt-10">
-										<img src="images/icon/facebook.png" alt="">
-										<span class="ps-3">Signup with Facebook</span>
-									</a>
-								</div>
-							</div> --}}
 						</div>
 						<!-- /.form-wrapper -->
                     </div>
@@ -509,6 +474,4 @@
 	</div> <!-- /.main-page-wrapper -->
 </body>
 
-
-<!-- Mirrored from html.creativegigstf.com/homy/homy/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jan 2024 13:01:49 GMT -->
 </html>

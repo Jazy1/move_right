@@ -18,6 +18,24 @@
 
             <h2 class="main-title d-block d-lg-none">Add New Property</h2>
 
+            @if (Session::has('success'))
+                <div class="alert alert-success some-space-upNdown" role="alert">
+                    <center style="">
+                        {{ session("success") }}
+                        <br>
+                    </center> 
+                </div>
+            @endif
+
+            @if (Session::has('fail'))
+                <div class="alert alert-danger some-space-upNdown" role="alert">
+                    <center style="">
+                        {{ session("fail") }}
+                        <br>
+                    </center> 
+                </div>
+            @endif
+
             <form action="{{route("landlords.properties.update", $property->id)}}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
@@ -47,7 +65,7 @@
                                     
                                     @foreach(['house', 'plot', 'apartments', 'Industrial', 'condos', 'villas', 'lofts'] as $optionValue)
                                         <option value="{{ $optionValue }}" {{ $property->type == $optionValue ? 'selected' : '' }}>
-                                            {{ ucfirst($optionValue) }} <!-- Optional: capitalize the option text -->
+                                            {{ ucfirst($optionValue) }} 
                                         </option>
                                     @endforeach
                                 </select>
@@ -63,8 +81,6 @@
                                     @foreach (["sell", "rent"] as $listIn)
                                         <option value="{{ $listIn }}" {{ $property->list_in == $listIn ?'selected' : '' }}>{{ ucfirst($listIn) }}</option>
                                     @endforeach
-                                    {{-- <option value="sell">Sell</option>
-                                    <option value="rent">Rent</option> --}}
                                     <span class="text-danger">@error('list_in'){{$message}}@enderror</span>
                                 </select>
                             </div>
@@ -83,8 +99,6 @@
                             <input type="checkbox" name="allow_sublet" {{ $property->allow_sublet == 1 ? 'checked' : '' }} value="1">
                             <label>Allow Sublet?</label>
                             <div class="dash-input-wrapper mb-30">
-                                {{-- <label for="">Yearly Tax Rate*</label>
-                                <input type="text" placeholder="Tax Rate"> --}}
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
@@ -150,10 +164,7 @@
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
-                        {{-- <div class="col-md-6">
-                            
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
+                        
                         <div class="col-md-6">
                             <div class="dash-input-wrapper mb-30">
                                 <label for="">Year Built*</label>
@@ -162,58 +173,21 @@
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
-                        {{-- <div class="col-md-6">
-                            <div class="dash-input-wrapper mb-30">
-                                <label for="">Floors No*</label>
-                                <select class="nice-select">
-                                    <option value="0">Ground</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
-                        {{-- <div class="col-12">
-                            <div class="dash-input-wrapper">
-                                <label for="">Description*</label>
-                                <textarea class="size-lg" placeholder="Write about property..."></textarea>
-                            </div>
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
+                        
                     </div>
                 </div>
                 <!-- /.card-box -->
 
-                {{-- <div class="bg-white card-box border-20 mt-40">
-                    <h4 class="dash-title-three">Photo & Video Attachment</h4>
-                    <div class="dash-input-wrapper mb-20">
-                        <label for="">File Attachment*</label>
-                        
-                        <div class="attached-file d-flex align-items-center justify-content-between mb-15">
-                            <span>PorpertyImage_01.jpg</span>
-                            <a href="#" class="remove-btn" onclick="removeFile('PorpertyImage_01.jpg')"><i class="bi bi-x"></i></a>
-                            <input type="file" name="">
-                        </div>
-                    </div>
-                    <!-- /.dash-input-wrapper -->
-                    <button type="button" class="dash-btn-one d-inline-block position-relative me-3">
-                        <i class="bi bi-plus"></i>
-                        Upload File
-                    </button>
-                    <small>Upload file .jpg,  .png,  .mp4</small>
-                </div> --}}
+               
 
                 <div class="bg-white card-box border-20 mt-40">
                     <h4 class="dash-title-three">Photo & Video Attachment</h4>
                     <div class="dash-input-wrapper mb-20" id="attachedFilesContainer">
-                        <!-- Attached Files will be dynamically added here -->
                     </div>
                     <!-- /.dash-input-wrapper -->
                     <button type="button" class="dash-btn-one d-inline-block position-relative me-3" onclick="attachFile()">
                         <i class="bi bi-plus"></i>
                         Upload File
-                        {{-- <input type="file" id="media" name="media[]" accept=".jpg, .jpeg, .png, .mp4" multiple> --}}
                     </button>
                     <small>Upload file .jpg .jpeg .png .mp4</small>
                     <span class="text-danger" id="mediaError"></span>
@@ -278,10 +252,6 @@
                             </div>
                             <!-- /.dash-input-wrapper -->
                         </div>
-                        {{-- <div class="col-12">
-                            
-                            <!-- /.dash-input-wrapper -->
-                        </div> --}}
                     </div>
                 </div>
                 <!-- /.card-box -->
@@ -313,17 +283,14 @@
                         console.log(data);
                         $('#area').empty();
     
-                        // Add new options
                         $.each(data, function (index, area) {
                             $('#area').append('<option value="' + area.id + '">' + area.name + '</option>');
                         });
     
-                        // Trigger nice-select refresh
                         $('#area').niceSelect('update');
                     }
                 });
             });
-            // $('#city').change(function () {
                 var cityId = {{ $property->location->city->id }};
     
                 $.ajax({
@@ -339,12 +306,10 @@
 
                         var selectedAreaId = {{ $property->location->area->id ?? 'null' }};
                         
-                        // Add new options
                         $.each(data, function (index, area) {
                             $('#area').append('<option value="' + area.id + '" ' + (selectedAreaId == area.id ? 'selected' : '') + '>' + area.name + '</option>');
                         });
     
-                        // Trigger nice-select refresh
                         $('#area').niceSelect('update');
                     }
                 });
@@ -356,7 +321,6 @@
         const attachedFilesContainer = document.getElementById('attachedFilesContainer');
         let count = 1;
 
-        // Assume $property->media is an array containing paths to media files
         const existingMedia = {!! json_encode($property->media ?? []) !!};
 
         function attachFile(mediaFilePath = null, existing = false) {
@@ -387,7 +351,7 @@
                 fileInput.accept = '.jpg, .jpeg, .png, .mp4';
             }
             fileInput.id = inputId;
-            fileInput.style.display = 'none'; // Hide the input
+            fileInput.style.display = 'none'; 
 
             fileContainer.appendChild(fileNameSpan);
             fileContainer.appendChild(removeBtn);
@@ -400,7 +364,6 @@
                 count++;
             }
 
-            // If mediaFilePath is provided (when editing), set the file name as text
             if (mediaFilePath) {
                 fileNameSpan.textContent = getFileNameFromPath(mediaFilePath);
             }
@@ -410,7 +373,6 @@
             const fileInput = document.getElementById(id);
             const fileLabel = document.querySelector(`label[for="${id}"]`);
 
-            // console.log(fileInput.files)
             const files = fileInput.files;
 
             for (const file of files) {
@@ -423,7 +385,6 @@
             return filePath.split('/').pop();
         }
 
-        // Populate the attachedFilesContainer with existing media
         existingMedia.forEach(mediaFilePath => {
             attachFile(mediaFilePath, true);
         });

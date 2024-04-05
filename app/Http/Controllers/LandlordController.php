@@ -11,7 +11,6 @@ use App\Models\Location;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
 
 class LandlordController extends Controller{
     
@@ -35,31 +34,26 @@ class LandlordController extends Controller{
     public function update(Request $request, $id){
         $landlord = Landlord::findOrFail($id);
 
-        // Create a new Location only if it is changed, also deleting the older ones
         $hasCityChanged = $landlord->location->city->id != $request->city_id ? true : false;
         $hasAreaChanged = $landlord->location->area->id != $request->area_id ? true : false;
 
         if ($hasCityChanged || $hasAreaChanged) {
-            $landlord->location->delete();
             $location = Location::create([
                 'city_id' => $request->city_id,
                 'area_id' => $request->area_id,
             ]);
         }
         
-        // Add location_id to the validatedData
         $location_id = $location->id ?? $landlord->location->id;
 
-        // Update name and email
         $landlord->update([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'about' => $request->about,
-            'location' => $location_id
+            'location_id' => $location_id
         ]);
 
-        // Update profile image
         if ($request->hasFile('profile_picture')) {
             $fileName = time(). "_" . $request->file('profile_picture')->getClientOriginalName();
             $path = $request->file('profile_picture')->storeAs('public/profile-pictures', $fileName);
@@ -81,16 +75,13 @@ class LandlordController extends Controller{
 
     public function store(Request $request){
 
-        // Create a new Landlord instance
         $landlord = new Landlord([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
-            // Add other fields
         ]);
     
-        // Save the model to the database
         $landlord->save();
 
         return redirect()->route('public.home')->with([
@@ -113,18 +104,6 @@ class LandlordController extends Controller{
         return view('landlords.edit', compact('landlord'));
     }
 
-    // public function update(Request $request, Landlord $landlord){
-    //     $request->validate([
-    //         'name' => 'required|string',
-    //         'email' => 'required|email|unique:landlords,email,' . $landlord->id,
-    //         // Add validation rules for other fields
-    //     ]);
-
-    //     $landlord->update($request->all());
-
-    //     return redirect()->route('landlords.index')
-    //         ->with('success', 'Landlord updated successfully');
-    // }
 
     public function destroy(Landlord $landlord){
         $landlord->delete();
@@ -137,23 +116,18 @@ class LandlordController extends Controller{
         $email = $request->input('email');
         $password = $request->input('password');
         
-        // Retrieve the user data from the database
         $landlord = Landlord::where('email', $email)->first();
     
         if ($landlord) {
-            // Verify the password
             if (password_verify($password, $landlord->password)) {
-                // Password is correct, create a session and return the user ID
                 session()->put(["LoggedLandlord" => $landlord->id]);
                 
                 return redirect()->route("landlords.dashboard");
 
             } else {
-                // Password is incorrect
                 return redirect()->back()->with("fail", "Password is not correct");
             }
         } else {
-            // User not found
             return redirect()->back()->with("fail", "Email not Found");
         }
     }
